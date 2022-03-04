@@ -85,24 +85,20 @@ export default {
           });
         }
       });
-
+      
+      if (!"IntersectionObserver" in window) return;
       api.modifyClass("component:site-header", {
         pluginId: "sticky-create-topic",
-        
-        if (!"IntersectionObserver" in window) return;
-        
-        @on("didInsertElement")
+        @on("didInsertElement")        
         stickyCreateTopicrCheck() {
           const anchor = document.querySelector(".vaperina-panel");
           const body = document.querySelector("body");
-          const stickyClass = "sticky-create-topic";
-
 
           new IntersectionObserver(entries => {
             if (!entries[0].isIntersecting) {
-              body.classList.add(stickyClass);
+              body.classList.add("sticky-create-topic");
             } else {
-              body.classList.remove(stickyClass);
+              body.classList.remove("sticky-create-topic");
             }
           }).observe(anchor);
         }
