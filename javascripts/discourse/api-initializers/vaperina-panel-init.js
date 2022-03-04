@@ -87,10 +87,10 @@ export default {
             component.set("user", api.getCurrentUser().username);         
           });
           ajax("/u/" + username + ".json").then (function(result) {
-            const userCardBg = result.user.card_background_upload_url;
+            const userCardBg = result.user.getURLWithCDN.card_background_upload_url;
             const bioExcerpt = result.user.bio_excerpt;
             
-            component.set("userCardBg", getURLWithCDN(userCardBg));
+            component.set("userCardBg", userCardBg);
             component.set("bioExcerpt", bioExcerpt);
           });
         }
