@@ -54,7 +54,7 @@ export default {
           }
         }
       });
-      api.registerConnectorClass("discovery-list-container-top", "vp-stats", {
+      api.registerConnectorClass("discovery-list-container-top", "vaperina-panel", {
         setupComponent(args, component) {
           let username = component.get("currentUser.username");
 
