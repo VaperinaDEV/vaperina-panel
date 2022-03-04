@@ -72,7 +72,6 @@ export default {
 
             const userLikesReceived = result.user_summary.likes_received;
             const userLikesGiven = result.user_summary.likes_given;
-            const userCardBg = result.user_summary.card_background_upload_url;
 
             if (result.badges) {
               result.badges.forEach(function(badges){
@@ -84,9 +83,12 @@ export default {
             component.set("userLikesGiven", userLikesGiven);
             component.set("stinkinBadges", stinkinBadges);
             component.set("userName", api.getCurrentUser().name);
-            component.set("user", api.getCurrentUser().username);
-            component.set("userCardBg", userCardBg);            
+            component.set("user", api.getCurrentUser().username);         
           });
+          ajax("/u/" + username + ".json").then (function(result) {
+            const userCardBg = result.user.card_background_upload_url;
+            
+            component.set("userCardBg", userCardBg);   
         }
       });
     });
