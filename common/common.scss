@@ -7,13 +7,16 @@
 }
 
 .vp-panel {
+  background-size: cover;
+}
+
+.vp-panel-contents {
   display: flex;
   flex: 1 1 100%;
   align-items: center;
   flex-flow: column;
   padding: 0.5em;
-  background: var(--secondary) center center;
-  background-size: cover;
+  background: rgba(var(--secondary-rgb), 0.85);
   .vp-avatar {
     margin: 0.5em;
   }
