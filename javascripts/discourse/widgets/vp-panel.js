@@ -1,5 +1,4 @@
 import { createWidget } from "discourse/widgets/widget";
-import { ajax } from "discourse/lib/ajax";
 import { 
   avatarImg,
   getRawSize,
@@ -22,7 +21,7 @@ createWidget('vp-avatar', {
   
   userAvatarUrl() {
     let rawSize = getRawSize;
-    return this.user.get('avatar_template').replace("{size}", rawSize(45));
+    return this.user.get('avatar_template').replace("{size}", rawSize(60));
   },
 
   html() {
@@ -42,8 +41,8 @@ createWidget('vp-avatar', {
     return h('a', this.linkToUser(), [
       h('img.avatar', {
         loading: "lazy",
-        width: 45,
-        height: 45,
+        width: 60,
+        height: 60,
         src: getURLWithCDN(this.userAvatarUrl())
       })
     ]);
