@@ -1,11 +1,7 @@
-@import "var-mixin"; 
-
-.discovery-list-container-top-outlet.vaperina-panel {
-  @include bg-br-auto;
-}
+@import "var-mixin";
 
 .vp-panel-top {
-  border-radius: $br-auto;
+  @include bg-br-auto;
   background-size: cover;
   background-position: center;
   margin: 0 auto 16px auto;
