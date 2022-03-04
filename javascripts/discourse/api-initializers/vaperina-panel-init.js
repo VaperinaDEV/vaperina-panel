@@ -84,6 +84,28 @@ export default {
           });
         }
       });
+      if (!"IntersectionObserver" in window) return;
+
+      const { on } = require("discourse-common/utils/decorators");
+
+      const stickyClass = "sticky-create-topic";
+
+      api.modifyClass("component:site-header", {
+        pluginId: "sticky-create-topic",
+        @on("didInsertElement")
+        stickyCreateTopicrCheck() {
+          const anchor = document.querySelector(".vaperina-panel");
+          const body = document.querySelector("body");
+
+          new IntersectionObserver(entries => {
+            if (!entries[0].isIntersecting) {
+              body.classList.add(stickyClass);
+            } else {
+              body.classList.remove(stickyClass);
+            }
+          }).observe(anchor);
+        }
+      });
     });
   },
 };
