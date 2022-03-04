@@ -55,7 +55,7 @@ createWidget('vp-topic', {
   html() {
     let container = Discourse.__container__;
     let ntb_text = "Írj egy új témát...";
-    let ntb_icon = iconNode('plus');
+    let ntb_icon = iconNode('pen');
     let ntb_button_class = "btn btn-default btn btn-icon-text new-create-topic";
     let ntb_button_helper = "button#new-create-topic";
     let ntb_label_helper = "span.d-button-label";
