@@ -73,11 +73,17 @@
 }
 
 .vp-panel-contents-bottom {
-  display: flex;
-  flex-flow: row;
-  justify-content: center;
+  display: block;
+  position: relative;
+  background: var(--secondary);
+  width: max-content;
+  border-radius: $br-px;
+  margin-left: auto;
+  bottom: 0.25em;
+  right: 0.25em;
   .vp-link {
-    font-size: 1.5em;
+    display: inline-flex;
+    font-size: var(--font-up-2);
     color: var(--primary-high);
     margin: 0.25em 0.5em;
   }
