@@ -73,7 +73,7 @@
 }
 
 .vp-panel-contents-bottom {
-  display: block;
+  display: flex;
   position: relative;
   background: var(--secondary);
   width: max-content;
@@ -83,7 +83,7 @@
   bottom: 0.25em;
   right: 0.25em;
   .vp-link {
-    display: inline-flex;
+    display: flex;
     font-size: var(--font-up-1);
     color: var(--primary-high);
     padding: 0.5em;
