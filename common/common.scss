@@ -140,6 +140,7 @@
     &:hover,
     &:focus {
       background: var(--primary-low);
+      border: 1px solid var(--primary-high);
     }
     .d-icon {
       color: var(--primary-high);
