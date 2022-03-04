@@ -1,7 +1,6 @@
 import { withPluginApi } from "discourse/lib/plugin-api";
 import { ajax } from "discourse/lib/ajax";
 import { getURLWithCDN } from "discourse-common/lib/get-url";
-import { on } from "discourse-common/utils/decorators";
 
 export default {
   name: "vaperina-panel",
