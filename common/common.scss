@@ -3,7 +3,10 @@
 .discovery-list-container-top-outlet.vaperina-panel {
   @include bg-br-auto;
   margin: 0 auto 16px auto;
-  max-width: 600px;
+  display: none;
+  body.staff & {
+    display: block;
+  }
 }
 
 .vp-panel-top {
