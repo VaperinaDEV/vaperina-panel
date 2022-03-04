@@ -80,11 +80,18 @@ export default {
             component.set("user", api.getCurrentUser().username);         
           });
           ajax("/u/" + username + "/card.json").then (function(result) {
-            const userCardBg = result.card_background_upload_url;
-            const badgesCard = result.user_badges;
+            const userCardBg = result.user.card_background_upload_url;
+            const badgesCard = result.user.badges;
+            const stinkinBadges = [];
+            
+            if (result.badges) {
+              result.badges.forEach(function(badges){
+                stinkinBadges.push(badges);
+              });
+            }
             
             component.set("userCardBg", `${getURLWithCDN(userCardBg)}`);
-            component.set("badgesCard", badgesCard);
+            component.set("stinkinBadges", stinkinBadges);
           });
         }
       });
