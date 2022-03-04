@@ -72,7 +72,7 @@ export default {
 
             const userLikesReceived = result.user_summary.likes_received;
             const userLikesGiven = result.user_summary.likes_given;
-            const userCardBg = result.card_background_upload_url;
+            const userCardBg = user.card_background_upload_url;
 
             if (result.badges) {
               result.badges.forEach(function(badges){
