@@ -1,4 +1,5 @@
 import { withPluginApi } from "discourse/lib/plugin-api";
+import { ajax } from "discourse/lib/ajax";
 
 export default {
   name: "vaperina-panel",
