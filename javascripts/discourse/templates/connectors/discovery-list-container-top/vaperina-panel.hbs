@@ -1,5 +1,6 @@
 {{#if currentUser}}
-  <div class="vp-panel" style="background: url({{userCardBg}});">
+<div class="vp-panel-top" style="background-image: url({{userCardBg}});">
+  <div class="vp-panel-contents">
     {{mount-widget widget="vp-avatar"}}
     <div class="vp-new-topic">
       {{mount-widget widget="vp-topic"}}  
@@ -31,4 +32,5 @@
       <a class="vp-link" href="/my/summary">{{d-icon "cog"}}</a>
     {{/if}}
   </div>
+</div>
 {{/if}}
