@@ -12,12 +12,15 @@
 }
 
 .vp-panel-contents {
+  background: rgba(var(--secondary-rgb), 0.85);
+}
+
+.vp-panel-contents-top {
   display: flex;
   flex: 1 1 100%;
   align-items: center;
-  flex-flow: column;
+  flex-flow: row;
   padding: 0.5em;
-  background: rgba(var(--secondary-rgb), 0.85);
   .vp-avatar {
     margin: 0.5em;
   }
@@ -31,6 +34,14 @@
       right: 0;
     }
   }
+}
+
+.vp-panel-contents-stats {
+  display: flex;
+  flex: 1 1 100%;
+  align-items: center;
+  flex-flow: column;
+  padding: 0.5em;
   .vp-stats {
     .likes {
       display: flex;
