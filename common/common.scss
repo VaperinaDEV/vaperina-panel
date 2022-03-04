@@ -72,6 +72,17 @@
   }
 }
 
+.vp-panel-contents-bottom {
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  .vp-link {
+    font-size: 1.5em;
+    color: var(--primary-high);
+    margin: 0.25em 0.5em;
+  }
+}
+
 #new-create-topic {
   display: flex;
   flex: 1 1 auto;
