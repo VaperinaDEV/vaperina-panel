@@ -162,10 +162,10 @@
       border: 1px solid var(--primary-high);
       .d-icon {
         color: var(--secondary);
-        &:focus,
-        &:hover {
-          background: var(--primary-high);
-        }
+      }
+      &:focus,
+      &:hover {
+        background: var(--primary-high);
       }
     }
   }
