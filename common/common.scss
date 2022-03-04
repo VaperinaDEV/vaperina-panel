@@ -42,7 +42,7 @@
   flex-flow: column;
   padding: 0 0.5em 0.5em;
   .bio-excerpt {
-    display: -webkit-box;
+    display: none;
     overflow: hidden;
     text-overflow: ellipsis;
     word-wrap: break-word;
