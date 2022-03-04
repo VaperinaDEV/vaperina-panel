@@ -3,6 +3,7 @@
 .discovery-list-container-top-outlet.vaperina-panel {
   @include bg-br-auto;
   margin: 0 auto 16px auto;
+  max-width: 600px;
 }
 
 .vp-panel {
@@ -22,6 +23,36 @@
       position: absolute;
       margin-top: -3em;
       right: 0;
+    }
+  }
+  .vp-stats {
+    .likes {
+      display: flex;
+      justify-content: center;
+      .user-stat {
+        margin: 0.5em;
+      }
+      label .d-icon-heart {
+        color: var(--love);
+      }
+    }
+    .badges {
+      text-align: center;
+      .badge-type-1 {
+        .d-icon {
+          color: var(--gold);
+        }
+      }
+      .badge-type-2 {
+        .d-icon {
+          color: var(--silver);
+        }
+      }
+      .badge-type-3 {
+        .d-icon {
+          color: var(--bronze);
+        }
+      }
     }
   }
 }
