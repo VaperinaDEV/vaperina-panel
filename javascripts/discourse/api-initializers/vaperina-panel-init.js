@@ -81,7 +81,7 @@ export default {
           });
           ajax("/u/" + username + "/card.json").then (function(result) {
             const userCardBg = result.user.card_background_upload_url;
-            const badgesCard = result.user.badges;
+            const badgesCard = result.user.user_badges;
             
             component.set("userCardBg", `${getURLWithCDN(userCardBg)}`);
             component.set("badgesCard", badgesCard);
