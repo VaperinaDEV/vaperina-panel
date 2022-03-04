@@ -87,8 +87,10 @@ export default {
           });
           ajax("/u/" + username + ".json").then (function(result) {
             const userCardBg = result.user.card_background_upload_url;
+            const bioExcerpt = result.user.bio_excerpt;
             
-            component.set("userCardBg", userCardBg);  
+            component.set("userCardBg", userCardBg);
+            component.set("bioExcerpt", bioExcerpt);
           });
         }
       });
