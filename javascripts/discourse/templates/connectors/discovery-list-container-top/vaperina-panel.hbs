@@ -9,11 +9,6 @@
       </div>
     </div>
     <div class="vp-panel-contents-stats">
-      {{#if badgesCard}}
-        <div class="badgesCard">
-          {{badgesCard}}
-        </div>
-      {{/if}}
       {{#if userLikesGiven}}
         <div class="likes">
           {{user-stat value=userLikesReceived icon="heart" label="user.summary.likes_received"}}
@@ -31,6 +26,13 @@
               {{/badge-button}}
             </a>
           {{/each}}
+          {{#if this.showMoreBadges}}
+            <span class="more-user-badges">
+              {{#link-to "user.badges" this.user}}
+                {{i18n "badges.more_badges" count=this.moreBadgesCount}}
+              {{/link-to}}
+            </span>
+          {{/if}}
         </div>
       {{/if}}
     </div>
