@@ -39,8 +39,6 @@
 
 .vp-panel-contents-stats {
   display: flex;
-  flex: 1 1 100%;
-  align-items: center;
   flex-flow: column;
   padding: 0 0.5em 0.5em;
   .bio-excerpt {
@@ -61,12 +59,9 @@
     }
   }
   .badges {
-    display: flex;
-    flex-flow: row wrap;
     .user-badge {
       border-radius: $br-px;
     }
-    text-align: center;
     .badge-type-1 {
       .d-icon {
         color: var(--gold);
