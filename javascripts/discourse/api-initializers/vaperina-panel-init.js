@@ -84,22 +84,6 @@ export default {
             component.set("stinkinBadges", stinkinBadges);
           });
         }
-      });      
-      api.modifyClass("component:site-header", {
-        pluginId: "sticky-create-topic",
-        @on("didInsertElement")        
-        stickyCreateTopicrCheck() {
-          const anchor = document.querySelector(".vaperina-panel");
-          const body = document.querySelector("body");
-          if (!"IntersectionObserver" in window) return;
-          new IntersectionObserver(entries => {
-            if (!entries[0].isIntersecting) {
-              body.classList.add("sticky-create-topic");
-            } else {
-              body.classList.remove("sticky-create-topic");
-            }
-          }).observe(anchor);
-        }
       });
     });
   },
