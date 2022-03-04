@@ -42,33 +42,31 @@
   align-items: center;
   flex-flow: column;
   padding: 0.5em;
-  .vp-stats {
-    .likes {
-      display: flex;
-      justify-content: center;
-      .user-stat {
-        margin: 0.5em;
-      }
-      .label .d-icon-heart {
-        color: var(--love);
+  .likes {
+    display: flex;
+    justify-content: center;
+    .user-stat {
+      margin: 0.5em;
+    }
+    .label .d-icon-heart {
+      color: var(--love);
+    }
+  }
+  .badges {
+    text-align: center;
+    .badge-type-1 {
+      .d-icon {
+        color: var(--gold);
       }
     }
-    .badges {
-      text-align: center;
-      .badge-type-1 {
-        .d-icon {
-          color: var(--gold);
-        }
+    .badge-type-2 {
+      .d-icon {
+        color: var(--silver);
       }
-      .badge-type-2 {
-        .d-icon {
-          color: var(--silver);
-        }
-      }
-      .badge-type-3 {
-        .d-icon {
-          color: var(--bronze);
-        }
+    }
+    .badge-type-3 {
+      .d-icon {
+        color: var(--bronze);
       }
     }
   }
