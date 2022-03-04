@@ -158,6 +158,7 @@
 .vp-new-topic {
   &.open-draft {
     .new-topic-dropdown-panel .btn {
+      background: var(--primary-medium);
       border: 1px solid var(--primary-high);
       .d-icon {
         color: var(--secondary);
