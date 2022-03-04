@@ -79,7 +79,7 @@ export default {
             component.set("userName", api.getCurrentUser().name);
             component.set("user", api.getCurrentUser().username);         
           });
-          ajax("/u/" + username + "card.json").then (function(result) {
+          ajax("/u/" + username + "/card.json").then (function(result) {
             const userCardBg = result.user.card_background_upload_url;
             const badgesCard = result.user.badges;
             
