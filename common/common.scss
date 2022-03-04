@@ -100,30 +100,32 @@
   justify-content: flex-start;
   width: 100%;
   height: 3em;
-  color: var(--secondary);
-  border: 2px solid var(--tertiary);
-  background: var(--tertiary);
+  color: var(--primary-high);
+  border: 1px solid var(--primary-high);
+  background: var(--secondary);
   border-radius: 2em;
   transition: background 0.25s ease-out;
   .d-icon {
     width: 1.25em;
     height: 1.25em;
-    color: var(--secondary);
+    color: var(--primary-high);
     margin-right: 0.5em;
     margin-left: 0.5em;
   }
   &:hover,
   &:focus {
-    background: var(--tertiary-hover);
-    border: 2px solid var(--tertiary-hover);
+    background: var(--primary-low);
   }
   &.open-draft {
     background: var(--primary-medium);
-    border: 2px solid var(--primary-medium);
+    border: 1px solid var(--primary-high);
+    color: var(--secondary);
+    .d-icon {
+      color: var(--secondary);
+    }
     &:focus,
     &:hover {
       background: var(--primary-high);
-      border: 2px solid var(--primary-high);
     }
   }
 }
@@ -134,13 +136,13 @@
     height: 3em;
     background: var(--secondary);
     border-radius: 0 2em 2em 0;
-    border: 2px solid var(--tertiary);
+    border: 1px solid var(--primary-high);
     &:hover,
     &:focus {
       background: var(--primary-low);
     }
     .d-icon {
-      color: var(--tertiary);
+      color: var(--primary-high);
       &.caret-icon {
         padding-left: 0;
         margin-left: 0 !important;
@@ -155,9 +157,9 @@
 .vp-new-topic {
   &.open-draft {
     .new-topic-dropdown-panel .btn {
-      border: 2px solid var(--primary-medium);
+      border: 1px solid var(--primary-high);
       .d-icon {
-        color: var(--primary-medium);
+        color: var(--secondary);
       }
     }
   }
