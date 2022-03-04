@@ -1,13 +1,14 @@
 {{#if currentUser}}
 <div class="vp-panel-top" style="background-image: url({{userCardBg}});">
   <div class="vp-panel-contents">
-    {{mount-widget widget="vp-avatar"}}
-    <div class="vp-new-topic">
-      {{mount-widget widget="vp-topic"}}  
-      {{new-topic-dropdown-panel category=category}}
+    <div class="vp-panel-contents-top">
+      {{mount-widget widget="vp-avatar"}}
+      <div class="vp-new-topic">
+        {{mount-widget widget="vp-topic"}}  
+        {{new-topic-dropdown-panel category=category}}
+      </div>
     </div>
-    <div class="vp-stats">
-      <p class="quote-known">{{quote}}</p>
+    <div class="vp-panel-contents-stats">
       {{#if userLikesGiven}}
         <div class="likes">
           {{user-stat value=userLikesReceived icon="heart" label="user.summary.likes_received"}}
@@ -28,9 +29,11 @@
         </div>
       {{/if}}
     </div>
-    {{#if user}}
-      <a class="vp-link" href="/my/summary">{{d-icon "cog"}}</a>
-    {{/if}}
+    <div class="vp-panel-contents-bottom">
+      {{#if user}}
+        <a class="vp-link" href="/my/summary">{{d-icon "cog"}}</a>
+      {{/if}}
+    </div>
   </div>
 </div>
 {{/if}}
