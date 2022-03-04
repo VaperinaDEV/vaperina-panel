@@ -62,26 +62,16 @@ export default {
 
           ajax("/u/" + username + "/summary.json").then (function(result) {
 
-            const stinkinBadges = [];
-
             const userLikesReceived = result.user_summary.likes_received;
             const userLikesGiven = result.user_summary.likes_given;
 
-            if (result.badges) {
-              result.badges.forEach(function(badges){
-                stinkinBadges.push(badges);
-              });
-            }
-
             component.set("userLikesReceived", userLikesReceived);
             component.set("userLikesGiven", userLikesGiven);
-            component.set("stinkinBadges", stinkinBadges);
             component.set("userName", api.getCurrentUser().name);
             component.set("user", api.getCurrentUser().username);         
           });
           ajax("/u/" + username + "/card.json").then (function(result) {
             const userCardBg = result.user.card_background_upload_url;
-            const badgesCard = result.user.badges;
             const stinkinBadges = [];
             
             if (result.badges) {
