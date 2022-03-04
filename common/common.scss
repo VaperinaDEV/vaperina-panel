@@ -31,7 +31,7 @@
     margin: 0.5em;
     .new-topic-dropdown-panel {
       position: absolute;
-      margin-top: -3em;
+      margin-top: -40px;
       right: 0;
     }
   }
@@ -103,7 +103,7 @@
   flex: 1 1 auto;
   justify-content: flex-start;
   width: 100%;
-  height: 3em;
+  height: 40px;
   color: var(--primary-high);
   border: 1px solid var(--primary-high);
   background: var(--secondary);
@@ -137,7 +137,7 @@
 .select-kit {
   &.new-topic-dropdown-panel .btn {
     width: 3.5em;
-    height: 3em;
+    height: 40px;
     background: var(--secondary);
     border-radius: 0 2em 2em 0;
     border: 1px solid var(--primary-high);
