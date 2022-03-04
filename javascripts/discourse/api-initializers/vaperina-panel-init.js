@@ -84,6 +84,7 @@ export default {
             component.set("stinkinBadges", stinkinBadges);
             component.set("userName", api.getCurrentUser().name);
             component.set("user", api.getCurrentUser().username);
+            component.set("userCardBg", api.getCurrentUser().card_background_upload_url);            
           });
         }
       });
