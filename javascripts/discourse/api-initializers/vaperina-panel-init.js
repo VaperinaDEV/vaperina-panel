@@ -6,6 +6,7 @@ export default {
   name: "vaperina-panel",
   initialize() {
     withPluginApi("0.8.7", (api) => {
+      if (api.getCurrentUser() === null) return false;
       api.onAppEvent("composer:closed", () => {
         const homePage = document.querySelector('.navigation-topics');
         const categoryPage = document.querySelector('.category .list-container');
