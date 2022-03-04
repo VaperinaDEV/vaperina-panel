@@ -59,13 +59,6 @@ export default {
         setupComponent(args, component) {
           let username = component.get("currentUser.username");
 
-          fetch("https://raw.githubusercontent.com/VaperinaDEV/tudtad/main/index.json")
-          .then(response => response.json())
-          .then(quotes => {
-            const rand = Math.floor(Math.random() * quotes.length);
-            component.set('quote', quotes[rand]);
-          });
-
           ajax("/u/" + username + "/summary.json").then (function(result) {
 
             const stinkinBadges = [];
