@@ -12,6 +12,8 @@
   align-items: center;
   flex-flow: column;
   padding: 0.5em;
+  background: var(--secondary) center center;
+  background-size: cover;
   .vp-avatar {
     margin: 0.5em;
   }
