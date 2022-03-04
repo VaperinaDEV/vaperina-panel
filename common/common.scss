@@ -54,6 +54,9 @@
     }
   }
   .badges {
+    .user-badge {
+      border-radius: $br-px;
+    }
     text-align: center;
     .badge-type-1 {
       .d-icon {
