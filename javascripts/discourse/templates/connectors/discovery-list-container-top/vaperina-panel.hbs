@@ -6,18 +6,15 @@
       {{new-topic-dropdown-panel category=category}}
     </div>
     <div class="vp-stats">
-      <h2>{{i18n (theme-prefix "sidebar.welcome")}}{{#if user}}{{i18n (theme-prefix "sidebar.back")}} {{user}}{{/if}}?</h2>
       <p class="quote-known">{{quote}}</p>
       {{#if userLikesGiven}}
         <div class="likes">
-          <h3>{{i18n (theme-prefix "sidebar.likes_header")}}</h3>
           {{user-stat value=userLikesReceived icon="heart" label="user.summary.likes_received"}}
           {{user-stat value=userLikesGiven icon="heart" label="user.summary.likes_given"}}
         </div>
       {{/if}}
       {{#if stinkinBadges}}
         <div class="badges">
-          <h3>{{i18n (theme-prefix "sidebar.badges_header")}}</h3>
           {{#each stinkinBadges as |b|}}
             <a href="/badges/{{b.id}}/{{b.slug}}">
               {{#badge-button badge=b class=(concat "badge-type-" b.badge_type_id)}}
@@ -31,7 +28,7 @@
       {{/if}}
     </div>
     {{#if user}}
-      <a class="sidebar-link" href="/my/summary">{{i18n (theme-prefix "sidebar.full_profile")}}</a>
+      <a class="vp-link" href="/my/summary">{{d-icon "cog"}}</a>
     {{/if}}
   </div>
 {{/if}}
