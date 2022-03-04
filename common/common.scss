@@ -3,10 +3,6 @@
 .discovery-list-container-top-outlet.vaperina-panel {
   @include bg-br-auto;
   margin: 0 auto 16px auto;
-  display: none;
-  body.staff & {
-    display: block;
-  }
 }
 
 .vp-panel-top {
@@ -170,11 +166,10 @@
 }
 
 // Hide create topic button
-body.staff {
-  #main-outlet {
-    #create-topic,
-    .after-create-topic-button-outlet.new-topic-dropdown {
-      display: none;
-    }
+
+#main-outlet {
+  #create-topic,
+  .after-create-topic-button-outlet.new-topic-dropdown {
+    display: none;
   }
 }
