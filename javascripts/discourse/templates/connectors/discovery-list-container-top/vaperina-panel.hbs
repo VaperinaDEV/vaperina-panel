@@ -9,6 +9,11 @@
       </div>
     </div>
     <div class="vp-panel-contents-stats">
+      {{#if bioExcerpt}}
+        <div class="bio-excerpt">
+          {{bioExcerpt}}
+        </div>
+      {{/if}}
       {{#if userLikesGiven}}
         <div class="likes">
           {{user-stat value=userLikesReceived icon="heart" label="user.summary.likes_received"}}
