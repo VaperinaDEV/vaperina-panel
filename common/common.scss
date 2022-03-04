@@ -38,12 +38,13 @@
   flex-flow: column;
   padding: 0 0.5em 0.5em;
   .likes {
-    display: flex;
     .user-stat {
+      display: inline-block;
       margin: 0.5em;
     }
     .label .d-icon-heart {
       color: var(--love);
+      font-size: 0.9em;
     }
   }
   .badges {
