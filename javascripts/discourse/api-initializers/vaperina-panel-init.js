@@ -83,7 +83,7 @@ export default {
             const userCardBg = result.user.card_background_upload_url;
             const bioExcerpt = result.user.bio_excerpt;
             
-            component.set.("userCardBg", getURLWithCDN.userCardBg);
+            component.set.("userCardBg", getURLWithCDN(userCardBg));
             component.set("bioExcerpt", bioExcerpt);
           });
         }
