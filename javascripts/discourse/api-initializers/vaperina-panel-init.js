@@ -1,6 +1,5 @@
 import { withPluginApi } from "discourse/lib/plugin-api";
 import { ajax } from "discourse/lib/ajax";
-import { getURLWithCDN } from "discourse-common/lib/get-url";
 
 export default {
   name: "vaperina-panel",
@@ -90,7 +89,7 @@ export default {
             const userCardBg = result.user.card_background_upload_url;
             const bioExcerpt = result.user.bio_excerpt;
             
-            component.set.("userCardBg", getURLWithCDN.userCardBg);
+            component.set.("userCardBg", userCardBg);
             component.set("bioExcerpt", bioExcerpt);
           });
         }
