@@ -43,6 +43,14 @@
   align-items: center;
   flex-flow: column;
   padding: 0.5em;
+  .bio-excerpt {
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
   .likes {
     display: flex;
     justify-content: center;
