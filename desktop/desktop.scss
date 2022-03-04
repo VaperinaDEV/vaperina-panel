@@ -1,8 +1,7 @@
-#main-outlet {
-  #create-topic,
-  .after-create-topic-button-outlet.new-topic-dropdown {
-    display: none;
-    .sticky-create-button & {
+.sticky-create-topic {
+  #main-outlet {
+    #create-topic,
+    .after-create-topic-button-outlet.new-topic-dropdown {
       display: flex;
     }
   }
