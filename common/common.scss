@@ -86,7 +86,13 @@
     display: inline-flex;
     font-size: var(--font-up-1);
     color: var(--primary-high);
-    margin: 0.25em 0.5em;
+    padding: 0.5em;
+    border-radius: $br-px;
+    &:hover,
+    &:focus {
+      background: var(--primary-high);
+      color: var(--secondary);
+    }
   }
 }
 
