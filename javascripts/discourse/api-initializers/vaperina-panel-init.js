@@ -65,14 +65,6 @@ export default {
 
             const userLikesReceived = result.user_summary.likes_received;
             const userLikesGiven = result.user_summary.likes_given;
-
-            component.set("userLikesReceived", userLikesReceived);
-            component.set("userLikesGiven", userLikesGiven);
-            component.set("userName", api.getCurrentUser().name);
-            component.set("user", api.getCurrentUser().username);         
-          });
-          ajax("/u/" + username + "/card.json").then (function(result) {
-            const userCardBg = result.user.card_background_upload_url;
             const stinkinBadges = [];
             
             if (result.badges) {
@@ -80,9 +72,17 @@ export default {
                 stinkinBadges.push(badges);
               });
             }
+
+            component.set("userLikesReceived", userLikesReceived);
+            component.set("userLikesGiven", userLikesGiven);
+            component.set("stinkinBadges", stinkinBadges);
+            component.set("userName", api.getCurrentUser().name);
+            component.set("user", api.getCurrentUser().username);         
+          });
+          ajax("/u/" + username + "/card.json").then (function(result) {
+            const userCardBg = result.user.card_background_upload_url;
             
             component.set("userCardBg", `${getURLWithCDN(userCardBg)}`);
-            component.set("stinkinBadges", stinkinBadges);
           });
         }
       });
