@@ -1,4 +1,5 @@
 import { createWidget } from "discourse/widgets/widget";
+import { ajax } from "discourse/lib/ajax";
 import { 
   avatarImg,
   getRawSize,
@@ -87,3 +88,42 @@ createWidget('vp-topic', {
     );
   },
 });
+
+createWidget('vp-stats', {
+  tagName: 'div.vp-stats',
+  
+  html() {
+    setupComponent(args, component) {
+      let username = component.get("currentUser.username");
+      
+      fetch("https://raw.githubusercontent.com/VaperinaDEV/tudtad/main/index.json")
+      .then(response => response.json())
+      .then(quotes => {
+        const rand = Math.floor(Math.random() * quotes.length);
+        component.set('quote', quotes[rand]);
+      });
+      
+      ajax("/u/" + username + "/summary.json").then (function(result) {
+
+        const stinkinBadges = [];
+
+        const userLikesReceived = result.user_summary.likes_received;
+        const userLikesGiven = result.user_summary.likes_given;
+
+        if (result.badges) {
+          result.badges.forEach(function(badges){
+            stinkinBadges.push(badges);
+          });
+        }
+
+        component.set("userLikesReceived", userLikesReceived);
+        component.set("userLikesGiven", userLikesGiven);
+        component.set("stinkinBadges", stinkinBadges);
+        component.set("userName", api.getCurrentUser().name);
+        component.set("user", api.getCurrentUser().username);
+      });
+    }
+  },
+});
+
+
