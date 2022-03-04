@@ -21,7 +21,7 @@ createWidget('vp-avatar', {
   
   userAvatarUrl() {
     let rawSize = getRawSize;
-    return this.user.get('avatar_template').replace("{size}", rawSize(60));
+    return this.user.get('avatar_template').replace("{size}", rawSize(45));
   },
 
   html() {
@@ -41,8 +41,8 @@ createWidget('vp-avatar', {
     return h('a', this.linkToUser(), [
       h('img.avatar', {
         loading: "lazy",
-        width: 60,
-        height: 60,
+        width: 45,
+        height: 45,
         src: getURLWithCDN(this.userAvatarUrl())
       })
     ]);
