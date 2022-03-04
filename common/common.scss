@@ -2,13 +2,13 @@
 
 .discovery-list-container-top-outlet.vaperina-panel {
   @include bg-br-auto;
-  margin: 0 auto 16px auto;
 }
 
 .vp-panel-top {
   border-radius: $br-auto;
   background-size: cover;
   background-position: center;
+  margin: 0 auto 16px auto;
 }
 
 .vp-panel-contents {
