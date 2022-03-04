@@ -1,6 +1,7 @@
 import { withPluginApi } from "discourse/lib/plugin-api";
 import { ajax } from "discourse/lib/ajax";
 import { getURLWithCDN } from "discourse-common/lib/get-url";
+import { on } from "discourse-common/utils/decorators";
 
 export default {
   name: "vaperina-panel",
@@ -84,18 +85,18 @@ export default {
           });
         }
       });
-      if (!"IntersectionObserver" in window) return;
-
-      const { on } = require("discourse-common/utils/decorators");
-
-      const stickyClass = "sticky-create-topic";
 
       api.modifyClass("component:site-header", {
         pluginId: "sticky-create-topic",
+        
+        if (!"IntersectionObserver" in window) return;
+        
         @on("didInsertElement")
         stickyCreateTopicrCheck() {
           const anchor = document.querySelector(".vaperina-panel");
           const body = document.querySelector("body");
+          const stickyClass = "sticky-create-topic";
+
 
           new IntersectionObserver(entries => {
             if (!entries[0].isIntersecting) {
