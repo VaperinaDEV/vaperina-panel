@@ -12,6 +12,10 @@ export default {
         let result = settings.vaperina_panel;
         if (pref === null) {
           result = pref === "true";
+        } else {
+          if (pref !== null) {
+            result = pref === "false";
+          }
         }
         return result;
       }
