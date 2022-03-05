@@ -7,7 +7,13 @@
     }
     return result;
   }
-    
+  
+  if (!getVaperinaPanel) {
+    api.registerConnectorClass("discovery-list-container-top", "vaperina-panel", {
+      return false
+    });
+  }
+  
   
   // technically we only want to amend current user here
   api.modifyClass("model:user", {
