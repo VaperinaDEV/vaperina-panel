@@ -1,15 +1,4 @@
-<script type="text/discourse-plugin" version="0.8">
-  function getVaperinaPanel() {
-    let pref = localStorage.getItem("vaperinaPanel");
-    let result = settings.default_enabled;
-    if (pref !== null) {
-      result = pref === "true";
-    }
-    return result;
-  }
-</script>
-
-{{#if getVaperinaPanel}}
+{{#if getVaperinaPanel()}}
 <div class="vp-panel-top" style="background-image: url('{{userCardBg}}');">
   <div class="vp-panel-contents">
     <div class="vp-panel-contents-top">
