@@ -130,6 +130,10 @@ export default {
               component.set("userCardBg", `${getURLWithCDN(userCardBg)}`);
               component.set("stinkinBadges", stinkinBadges);
             });
+            ajax("/categories.json").then (function(result) {
+              const categoryList = result.category_list;
+              component.set("categoryList", categoryList);
+            });
           }
         });
       }
