@@ -10,12 +10,14 @@ export default {
       
       function getVaperinaPanel() {
         let pref = localStorage.getItem("vaperinaPanel");
+        let result = settings.vaperina_panel;
         if (pref !== null) {
-          return pref;
+          result = pref === "true";
         }
+        return result;
       }
       
-      if (!getVaperinaPanel() || !vaperinaPanelSetting) {
+      if (!getVaperinaPanel()) {
         api.registerConnectorClass("discovery-list-container-top", "vaperina-panel", {
           shouldRender() {
             return false;
