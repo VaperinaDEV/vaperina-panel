@@ -6,7 +6,6 @@ export default {
   name: "vaperina-panel",
   initialize() {
     withPluginApi("0.8.7", (api) => {
-      const vaperinaPanelSetting = settings.vaperina_panel;
       
       function getVaperinaPanel() {
         let pref = localStorage.getItem("vaperinaPanel");
