@@ -13,20 +13,20 @@ function getVaperinaPanel() {
   return result;
 }
 
-if (!getVaperinaPanel()) {
-  export default DropdownSelectBoxComponent.extend({
-    classNames: ["new-topic-dropdown-panel"],
+export default DropdownSelectBoxComponent.extend({
+  classNames: ["new-topic-dropdown-panel"],
 
-    selectKitOptions: {
-      icons: ["bolt"],
-      showFullTitle: false,
-      autoFilterable: false,
-      filterable: false,
-      showCaret: true,
-      none: "topic.create",
-    },
+  selectKitOptions: {
+    icons: ["bolt"],
+    showFullTitle: false,
+    autoFilterable: false,
+    filterable: false,
+    showCaret: true,
+    none: "topic.create",
+  },
 
-    content: computed(function () {
+  content: computed(function () {
+    if (getVaperinaPanel()) {
       const hideForNewUser = this.currentUser && this.currentUser.trust_level > 0;
 
       const items = [
@@ -107,5 +107,5 @@ if (!getVaperinaPanel()) {
         });
       }
     },
-  });
-}
+  }
+});
