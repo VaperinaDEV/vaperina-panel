@@ -1,12 +1,16 @@
 <script type="text/discourse-plugin" version="0.8">
-  function getVaperinaPanel() {
+  Handlebars.registerHelper("getVaperinaPanel", function() {
     let pref = localStorage.getItem("vaperinaPanel");
     let result = settings.default_enabled;
     if (pref !== null) {
       result = pref === "true";
     }
     return result;
-  }
+  });
+  
+  if (getVaperinaPanel) {
+    
+  
   // technically we only want to amend current user here
   api.modifyClass("model:user", {
     pluginId: "user-setting",
