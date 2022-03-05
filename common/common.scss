@@ -167,11 +167,3 @@
     }
   }
 }
-
-// Hide create topic button
-
-#main-outlet {
-  .after-create-topic-button-outlet.new-topic-dropdown {
-    display: none;
-  }
-}
