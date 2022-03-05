@@ -9,10 +9,10 @@ export default {
         
       if (api.getCurrentUser() === null) return false;
       
-      api.registerConnectorClass("discovery-list-container-top", "vaperina-panel", (helper) => {
+      api.registerConnectorClass("discovery-list-container-top", "vaperina-panel", "vp-panel-contents-top", (helper) => {
         return helper.attach("vp-avatar", helper);
       });
-      api.registerConnectorClass("discovery-list-container-top", "vaperina-panel", (helper) => {
+      api.registerConnectorClass("discovery-list-container-top", "vaperina-panel", "vp-new-topic", (helper) => {
         return helper.attach("vp-topic", helper);
       });
         
