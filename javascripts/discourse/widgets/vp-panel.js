@@ -16,6 +16,15 @@ function getUser() {
   return user;
 }
 
+function getVaperinaPanel() {
+  let pref = localStorage.getItem("vaperinaPanel");
+  let result = settings.default_enabled;
+  if (pref !== null) {
+    result = pref === "true";
+  }
+  return result;
+}
+
 if (!getVaperinaPanel()) {
 
   createWidget('vp-avatar', {
