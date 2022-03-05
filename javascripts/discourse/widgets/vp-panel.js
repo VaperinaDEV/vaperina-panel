@@ -25,7 +25,7 @@ function getVaperinaPanel() {
   return result;
 }
 
-if (!getVaperinaPanel()) {
+if (getVaperinaPanel()) {
 
   createWidget('vp-avatar', {
     tagName: 'div.vp-avatar',
