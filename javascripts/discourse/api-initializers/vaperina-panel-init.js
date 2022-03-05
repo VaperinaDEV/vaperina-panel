@@ -89,9 +89,6 @@ export default {
             vpNewTopic.classList.add('open-draft');
             newCreateButtonLabel.innerHTML = "Vázlat folytatása...";
           }
-          
-          const ogCreateButton = document.querySelector('#create-topic');
-          ogCreateButton.classList.add('hidden');
 
           const ogCreateDisable = document.querySelector('#create-topic');
 
