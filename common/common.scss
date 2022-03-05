@@ -171,42 +171,6 @@
 
 // Modify original create topic button
 
-.sticky-create-topic #create-topic {
-  display: flex;
-  flex: 1 1 auto;
-  justify-content: flex-start;
-  order: 5;
-  width: 100%;
-  height: 40px;
-  color: var(--primary-high);
-  border: 1px solid var(--primary-high);
-  background: var(--secondary);
-  border-radius: 2em;
-  transition: background 0.25s ease-out;
-  .d-icon {
-    color: var(--primary-high);
-    margin-right: 0.5em;
-    margin-left: 0.5em;
-  }
-  &:hover,
-  &:focus {
-    background: var(--primary-low);
-  }
-  &.open-draft {
-    background: var(--primary-medium);
-    border: 1px solid var(--primary-high);
-    color: var(--secondary);
-    .d-icon {
-      color: var(--secondary);
-    }
-    &:focus,
-    &:hover {
-      background: var(--primary-high);
-    }
-  }
-}
-
-
 .sticky-create-topic .select-kit {
   &.new-topic-dropdown .btn {
     width: 3.5em;
