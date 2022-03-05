@@ -130,11 +130,6 @@ export default {
               component.set("userCardBg", `${getURLWithCDN(userCardBg)}`);
               component.set("stinkinBadges", stinkinBadges);
             });
-            
-            ajax("/read.json").then (function(result) {
-              const lastRead = result.topic_list;
-              component.set("lastRead", lastRead);
-            });
           }
         });
       }
