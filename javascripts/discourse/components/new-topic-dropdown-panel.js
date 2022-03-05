@@ -4,15 +4,6 @@ import Composer from "discourse/models/composer";
 import DropdownSelectBoxComponent from "select-kit/components/dropdown-select-box";
 import { computed } from "@ember/object";
 
-function getVaperinaPanel() {
-  let pref = localStorage.getItem("vaperinaPanel");
-  let result = settings.default_enabled;
-  if (pref !== null) {
-    result = pref === "true";
-  }
-  return result;
-}
-
 export default DropdownSelectBoxComponent.extend({
   classNames: ["new-topic-dropdown-panel"],
 
@@ -26,7 +17,18 @@ export default DropdownSelectBoxComponent.extend({
   },
 
   content: computed(function () {
-    if (getVaperinaPanel()) {
+    
+    function getVaperinaPanel() {
+      let pref = localStorage.getItem("vaperinaPanel");
+      let result = settings.default_enabled;
+      if (pref !== null) {
+        result = pref === "true";
+      }
+      return result;
+    }
+    
+    if (!getVaperinaPanel()) {
+      
       const hideForNewUser = this.currentUser && this.currentUser.trust_level > 0;
 
       const items = [
