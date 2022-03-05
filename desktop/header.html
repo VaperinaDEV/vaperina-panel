@@ -1,43 +1,41 @@
 <script type="text/discourse-plugin" version="0.8">
-function getVaperinaPanel() {
-  let pref = localStorage.getItem("vaperinaPanel");
-  let result = settings.vaperina_panel;
-  if (pref !== null) {
-    result = pref === "false";
+const vaperinaPanelSetting = settings.vaperina_panel;
+if (vaperinaPanelSetting) {
+  function getVaperinaPanel() {
+    localStorage.getItem("vaperinaPanel");
   }
-  return result;
-}
-  
-if (getVaperinaPanel()) {
 
-  if (!"IntersectionObserver" in window) return;
+  if (getVaperinaPanel()) {
 
-  const { on } = require("discourse-common/utils/decorators");
+    if (!"IntersectionObserver" in window) return;
 
-  const stickyClass = "sticky-create-topic";
+    const { on } = require("discourse-common/utils/decorators");
 
-  api.modifyClass("component:create-topic-button", {
-    pluginId: "sticky-create-topic",
-    @on("didInsertElement")
-    stickyHeaderCheck() {
-      const anchor = document.querySelector(".vaperina-panel");
-      const body = document.querySelector("body");;
-      const ogCreateButton = document.querySelector('#create-topic');      
-      const ogNewTopicDrop = document.querySelector('.after-create-topic-button-outlet.new-topic-dropdown');
-      
-      new IntersectionObserver(entries => {
-        if (!entries[0].isIntersecting) {
-          body.classList.add(stickyClass);
-        } else {
-          body.classList.remove(stickyClass);
-        }
-        if (body.classList.contains(stickyClass)) {
-          ogCreateButton.classList.remove('hidden');
-        } else {
-          ogCreateButton.classList.add('hidden');
-        }
-      }).observe(anchor);
-    }
-  });
+    const stickyClass = "sticky-create-topic";
+
+    api.modifyClass("component:create-topic-button", {
+      pluginId: "sticky-create-topic",
+      @on("didInsertElement")
+      stickyHeaderCheck() {
+        const anchor = document.querySelector(".vaperina-panel");
+        const body = document.querySelector("body");;
+        const ogCreateButton = document.querySelector('#create-topic');      
+        const ogNewTopicDrop = document.querySelector('.after-create-topic-button-outlet.new-topic-dropdown');
+
+        new IntersectionObserver(entries => {
+          if (!entries[0].isIntersecting) {
+            body.classList.add(stickyClass);
+          } else {
+            body.classList.remove(stickyClass);
+          }
+          if (body.classList.contains(stickyClass)) {
+            ogCreateButton.classList.remove('hidden');
+          } else {
+            ogCreateButton.classList.add('hidden');
+          }
+        }).observe(anchor);
+      }
+    });
+  }
 }
 </script>
