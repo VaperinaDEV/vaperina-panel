@@ -10,7 +10,9 @@
   
   if (!getVaperinaPanel) {
     api.registerConnectorClass("discovery-list-container-top", "vaperina-panel", {
-      return false
+      shouldRender() {
+        return false;
+      },
     });
   }
   
