@@ -37,7 +37,7 @@ export default {
           save() {
             this._super();
             if (getVaperinaPanel() != this.get("model.vaperinaPanel")) {
-              Discourse.set("assetVersion", "refresh");
+              Discourse.set("assetVersion", "forceRefresh");
             }
             localStorage.setItem(
               "vaperinaPanel",
