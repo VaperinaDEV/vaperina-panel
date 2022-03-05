@@ -85,9 +85,11 @@ export default {
           if (homePage && ogCreateDisable.hasAttribute("disabled") || categoryPage && ogCreateDisable.hasAttribute("disabled")) {
             const newCreateButton = document.querySelector('#new-create-topic');
             newCreateButton.disabled = true;
-          } else if (homePage && ogCreateDisable || categoryPage && ogCreateDisable) {
+          } else {
+            if (homePage && ogCreateDisable || categoryPage && ogCreateDisable) {
               const newCreateButton = document.querySelector('#new-create-topic');
               newCreateButton.disabled = false;
+            }
           }
         });
         
