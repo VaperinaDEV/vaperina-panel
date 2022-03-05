@@ -15,6 +15,37 @@ export default {
         }
         return result;
       }
+      
+      if (!getVaperinaPanel()) {
+        api.registerConnectorClass("discovery-list-container-top", "vaperina-panel", {
+          shouldRender() {
+            return false;
+          }
+        });
+      }
+      // technically we only want to amend current user here
+      api.modifyClass("model:user", {
+        pluginId: "user-setting",
+        vaperinaPanel: function() {
+          return getVaperinaPanel();
+        }.property()
+      });
+      
+      api.modifyClass("controller:preferences/interface", {
+        pluginId: "button-add",
+        actions: {
+          save() {
+            this._super();
+            if (getVaperinaPanel() != this.get("model.vaperinaPanel")) {
+              Discourse.set("assetVersion", "forceRefresh");
+            }
+            localStorage.setItem(
+              "vaperinaPanel",
+              this.get("model.vaperinaPanel").toString()
+            );
+          }
+        }
+      });
   
       if (getVaperinaPanel()) {
         
