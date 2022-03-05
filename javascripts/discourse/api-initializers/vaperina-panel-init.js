@@ -6,6 +6,17 @@ export default {
   name: "vaperina-panel",
   initialize() {
     withPluginApi("0.8.7", (api) => {
+      
+      function getVaperinaPanel() {
+        let pref = localStorage.getItem("vaperinaPanel");
+        let result = settings.default_enabled;
+        if (pref !== null) {
+          result = pref === "true";
+        }
+        return result;
+      }
+  
+      if (getVaperinaPanel()) {
         
       if (api.getCurrentUser() === null) return false;
         
@@ -90,6 +101,7 @@ export default {
           });
         }
       });
+      }
     });
   },
 };
