@@ -1,0 +1,4 @@
+default_enabled:
+  default: false
+  description:
+    en: Enable Vaperina Panel
