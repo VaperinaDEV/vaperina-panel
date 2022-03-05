@@ -89,7 +89,7 @@ export default {
           } else {
             if (homePage && ogCreateDisable || categoryPage && ogCreateDisable) {
               const newCreateButton = document.querySelector('#new-create-topic');
-              newCreateButton.disabled = false;
+              newCreateButton.disabled;
             }
           }
         });
