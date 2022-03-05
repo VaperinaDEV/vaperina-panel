@@ -80,6 +80,18 @@ export default {
             vpNewTopic.classList.add('open-draft');
             newCreateButtonLabel.innerHTML = "Vázlat folytatása...";
           }
+          
+          const ogCreateDisable = document.querySelector('#create-topic');
+
+          if (homePage && ogCreateDisable.hasAttribute("disabled") || categoryPage && ogCreateDisable.hasAttribute("disabled")) {
+            const newCreateButton = document.querySelector('#new-create-topic');
+            newCreateButton.setAttribute("disabled");
+          } else {
+            if (homePage && ogCreateDisable || categoryPage && ogCreateDisable) {
+              const newCreateButton = document.querySelector('#new-create-topic');
+              newCreateButton.removeAttribute("disabled");
+            }
+          }
         });
         
         api.registerConnectorClass("discovery-list-container-top", "vaperina-panel", {
