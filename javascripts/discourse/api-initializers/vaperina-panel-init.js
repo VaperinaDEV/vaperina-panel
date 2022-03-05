@@ -1,6 +1,11 @@
 import { withPluginApi } from "discourse/lib/plugin-api";
 import { ajax } from "discourse/lib/ajax";
 import { getURLWithCDN } from "discourse-common/lib/get-url";
+import { action } from "@ember/object";
+import { getOwner } from "discourse-common/lib/get-owner";
+import Composer from "discourse/models/composer";
+import DropdownSelectBoxComponent from "select-kit/components/dropdown-select-box";
+import { computed } from "@ember/object";
 
 export default {
   name: "vaperina-panel",
@@ -122,7 +127,7 @@ export default {
   },
 };
 
-export default DropdownSelectBoxComponent.extend({
+export DropdownSelectBoxComponent.extend({
   name: "vaperina-new-topic-drop",
   initialize() {
     withPluginApi("0.8.7", (api) => {
