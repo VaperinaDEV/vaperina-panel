@@ -6,124 +6,90 @@ export default {
   name: "vaperina-panel",
   initialize() {
     withPluginApi("0.8.7", (api) => {
-      function getVaperinaPanel() {
-        let pref = localStorage.getItem("vaperinaPanel");
-        let result = settings.default_enabled;
-        if (pref !== null) {
-          result = pref === "true";
-        }
-        return result;
-      }
-      // technically we only want to amend current user here
-      api.modifyClass("model:user", {
-        pluginId: "user-setting",
-        vaperinaPanel: function() {
-          return getVaperinaPanel();
-        }.property()
-      });
-      
-      api.modifyClass("controller:preferences/interface", {
-        pluginId: "button-add",
-        actions: {
-          save() {
-            this._super();
-            if (getVaperinaPanel() != this.get("model.vaperinaPanel")) {
-              Discourse.set("assetVersion", "forceRefresh");
-            }
-            localStorage.setItem(
-              "vaperinaPanel",
-              this.get("model.vaperinaPanel").toString()
-            );
-          }
-        }
-      });
-
-      if (getVaperinaPanel()) {
         
-        if (api.getCurrentUser() === null) return false;
+      if (api.getCurrentUser() === null) return false;
         
-        api.onAppEvent("composer:closed", () => {
-          const homePage = document.querySelector('.navigation-topics');
-          const categoryPage = document.querySelector('.category .list-container');
-          const ogCreateHasDraft = document.querySelector('#create-topic.open-draft');
-          const ogCreateNoDraft = document.querySelector('#create-topic');
+      api.onAppEvent("composer:closed", () => {
+        const homePage = document.querySelector('.navigation-topics');
+        const categoryPage = document.querySelector('.category .list-container');
+        const ogCreateHasDraft = document.querySelector('#create-topic.open-draft');
+        const ogCreateNoDraft = document.querySelector('#create-topic');
 
-          if (homePage && ogCreateHasDraft || categoryPage && ogCreateHasDraft) {
+        if (homePage && ogCreateHasDraft || categoryPage && ogCreateHasDraft) {
+          const newCreateButton = document.querySelector('#new-create-topic');
+          const vpNewTopic = document.querySelector('.vp-new-topic');
+          const newCreateButtonLabel = document.querySelector('.new-create-topic .d-button-label');
+          newCreateButton.classList.add('open-draft');
+          vpNewTopic.classList.add('open-draft');
+          newCreateButtonLabel.innerHTML = "Vázlat folytatása...";
+        } else {
+          if (homePage && ogCreateNoDraft || categoryPage && ogCreateNoDraft) {
             const newCreateButton = document.querySelector('#new-create-topic');
             const vpNewTopic = document.querySelector('.vp-new-topic');
             const newCreateButtonLabel = document.querySelector('.new-create-topic .d-button-label');
-            newCreateButton.classList.add('open-draft');
-            vpNewTopic.classList.add('open-draft');
-            newCreateButtonLabel.innerHTML = "Vázlat folytatása...";
-          } else {
-            if (homePage && ogCreateNoDraft || categoryPage && ogCreateNoDraft) {
-              const newCreateButton = document.querySelector('#new-create-topic');
-              const vpNewTopic = document.querySelector('.vp-new-topic');
-              const newCreateButtonLabel = document.querySelector('.new-create-topic .d-button-label');
-              newCreateButton.classList.remove('open-draft');
-              vpNewTopic.classList.remove('open-draft');
-              newCreateButtonLabel.innerHTML = "Írj egy új témát...";
-            }
+            newCreateButton.classList.remove('open-draft');
+            vpNewTopic.classList.remove('open-draft');
+            newCreateButtonLabel.innerHTML = "Írj egy új témát...";
           }
-        });
+        }
+      });
         
-        api.onPageChange((url, title) => {
-          const homePage = document.querySelector('.navigation-topics');
-          const categoryPage = document.querySelector('.category .list-container');
-          const ogCreateHasDraft = document.querySelector('#create-topic.open-draft');
+      api.onPageChange((url, title) => {
+        const homePage = document.querySelector('.navigation-topics');
+        const categoryPage = document.querySelector('.category .list-container');
+        const ogCreateHasDraft = document.querySelector('#create-topic.open-draft');
 
-          if (homePage && ogCreateHasDraft || categoryPage && ogCreateHasDraft) {
-            const newCreateButton = document.querySelector('#new-create-topic');
-            const vpNewTopic = document.querySelector('.vp-new-topic');
-            const newCreateButtonLabel = document.querySelector('.new-create-topic .d-button-label');
-            newCreateButton.classList.add('open-draft');
-            vpNewTopic.classList.add('open-draft');
-            newCreateButtonLabel.innerHTML = "Vázlat folytatása...";
-          }
+        if (homePage && ogCreateHasDraft || categoryPage && ogCreateHasDraft) {
+          const newCreateButton = document.querySelector('#new-create-topic');
+          const vpNewTopic = document.querySelector('.vp-new-topic');
+          const newCreateButtonLabel = document.querySelector('.new-create-topic .d-button-label');
+          newCreateButton.classList.add('open-draft');
+          vpNewTopic.classList.add('open-draft');
+          newCreateButtonLabel.innerHTML = "Vázlat folytatása...";
+        }
           
-          const ogCreateDisable = document.querySelector('#create-topic');
+        const ogCreateDisable = document.querySelector('#create-topic');
 
-          if (homePage && ogCreateDisable.hasAttribute("disabled") || categoryPage && ogCreateDisable.hasAttribute("disabled")) {
+        if (homePage && ogCreateDisable.hasAttribute("disabled") || categoryPage && ogCreateDisable.hasAttribute("disabled")) {
+          const newCreateButton = document.querySelector('#new-create-topic');
+          newCreateButton.disabled = true;
+        } else {
+          if (homePage && ogCreateDisable || categoryPage && ogCreateDisable) {
             const newCreateButton = document.querySelector('#new-create-topic');
-            newCreateButton.disabled = true;
-          } else {
-            if (homePage && ogCreateDisable || categoryPage && ogCreateDisable) {
-              const newCreateButton = document.querySelector('#new-create-topic');
-              newCreateButton.disabled = false;
-            }
+            newCreateButton.disabled = false;
           }
-        });
+        }
+      });
         
-        api.registerConnectorClass("discovery-list-container-top", "vaperina-panel", {
-          setupComponent(args, component) {
-            let username = component.get("currentUser.username");
+      api.registerConnectorClass("discovery-list-container-top", "vaperina-panel", {
+        setupComponent(args, component) {
+          let username = component.get("currentUser.username");
 
-            ajax("/u/" + username + "/summary.json").then (function(result) {
+          ajax("/u/" + username + "/summary.json").then (function(result) {
 
-              const userLikesReceived = result.user_summary.likes_received;
-              const userLikesGiven = result.user_summary.likes_given;
+            const userLikesReceived = result.user_summary.likes_received;
+            const userLikesGiven = result.user_summary.likes_given;
 
-              component.set("userLikesReceived", userLikesReceived);
-              component.set("userLikesGiven", userLikesGiven);
-              component.set("userName", api.getCurrentUser().name);
-              component.set("user", api.getCurrentUser().username);         
-            });
+            component.set("userLikesReceived", userLikesReceived);
+            component.set("userLikesGiven", userLikesGiven);
+            component.set("userName", api.getCurrentUser().name);
+            component.set("user", api.getCurrentUser().username);         
+          });
             
-            ajax("/u/" + username + "/card.json").then (function(result) {
-              const userCardBg = result.user.card_background_upload_url;
-              const stinkinBadges = [];
+          ajax("/u/" + username + "/card.json").then (function(result) {
+            const userCardBg = result.user.card_background_upload_url;
+            const stinkinBadges = [];
 
-              if (result.badges) {
-                result.badges.forEach(function(badges){
-                  stinkinBadges.push(badges);
-                });
-              }
-              component.set("userCardBg", `${getURLWithCDN(userCardBg)}`);
-              component.set("stinkinBadges", stinkinBadges);
-            });
-          }
-        });
-      }
+            if (result.badges) {
+              result.badges.forEach(function(badges){
+                stinkinBadges.push(badges);
+              });
+            }
+            component.set("userCardBg", `${getURLWithCDN(userCardBg)}`);
+            component.set("stinkinBadges", stinkinBadges);
+          });
+        }
+      });
     });
   },
 };
