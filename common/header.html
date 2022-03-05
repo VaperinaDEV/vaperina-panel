@@ -1,5 +1,5 @@
 <script type="text/discourse-plugin" version="0.8">
-  Handlebars.registerHelper("getVaperinaPanel", function() {
+  Handlebars.registerHelper("if", function(getVaperinaPanel) {
     let pref = localStorage.getItem("vaperinaPanel");
     let result = settings.default_enabled;
     if (pref !== null) {
