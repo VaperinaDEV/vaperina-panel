@@ -7,7 +7,6 @@ export default {
   initialize() {
     withPluginApi("0.8.7", (api) => {
       const vaperinaPanelSetting = settings.vaperina_panel;
-      if (vaperinaPanelSetting) {
       
       function getVaperinaPanel() {
         localStorage.getItem("vaperinaPanel");
@@ -129,7 +128,6 @@ export default {
             });
           }
         });
-      }
       }
     });
   },
