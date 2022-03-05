@@ -16,12 +16,14 @@ export default {
       }
       // technically we only want to amend current user here
       api.modifyClass("model:user", {
+        pluginId: "user-setting",
         vaperinaPanel: function() {
           return getVaperinaPanel();
         }.property()
       });
       
       api.modifyClass("controller:preferences/interface", {
+        pluginId: "button-add",
         actions: {
           save() {
             this._super();
