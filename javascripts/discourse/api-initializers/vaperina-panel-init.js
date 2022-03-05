@@ -38,7 +38,9 @@ export default {
       });
 
       if (getVaperinaPanel()) {
+        
         if (api.getCurrentUser() === null) return false;
+        
         api.onAppEvent("composer:closed", () => {
           const homePage = document.querySelector('.navigation-topics');
           const categoryPage = document.querySelector('.category .list-container');
@@ -63,6 +65,7 @@ export default {
             }
           }
         });
+        
         api.onPageChange((url, title) => {
           const homePage = document.querySelector('.navigation-topics');
           const categoryPage = document.querySelector('.category .list-container');
@@ -82,13 +85,12 @@ export default {
           if (homePage && ogCreateDisable.hasAttribute("disabled") || categoryPage && ogCreateDisable.hasAttribute("disabled")) {
             const newCreateButton = document.querySelector('#new-create-topic');
             newCreateButton.disabled = true;
-          } else {
-            if (homePage && ogCreateDisable || categoryPage && ogCreateDisable) {
+          } else if (homePage && ogCreateDisable || categoryPage && ogCreateDisable) {
               const newCreateButton = document.querySelector('#new-create-topic');
               newCreateButton.disabled = false;
-            }
           }
         });
+        
         api.registerConnectorClass("discovery-list-container-top", "vaperina-panel", {
           setupComponent(args, component) {
             let username = component.get("currentUser.username");
@@ -103,6 +105,7 @@ export default {
               component.set("userName", api.getCurrentUser().name);
               component.set("user", api.getCurrentUser().username);         
             });
+            
             ajax("/u/" + username + "/card.json").then (function(result) {
               const userCardBg = result.user.card_background_upload_url;
               const stinkinBadges = [];
