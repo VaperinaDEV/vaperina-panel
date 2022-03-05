@@ -1,12 +1,12 @@
 <script type="text/discourse-plugin" version="0.8">
-  Handlebars.registerHelper("if", function(getVaperinaPanel) {
+  function getVaperinaPanel() {
     let pref = localStorage.getItem("vaperinaPanel");
     let result = settings.default_enabled;
     if (pref !== null) {
       result = pref === "true";
     }
     return result;
-  });
+  }
     
   
   // technically we only want to amend current user here
