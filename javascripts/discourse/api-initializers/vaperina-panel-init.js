@@ -7,11 +7,8 @@ export default {
   initialize() {
     function getVaperinaPanel() {
       let pref = localStorage.getItem("vaperinaPanel");
-      let result = settings.default_enabled;
-      if (pref !== null) {
-        result = pref === "true";
-      }
-      return result;
+
+      return pref;
     }
     withPluginApi("0.8.7", (api) => {
 
