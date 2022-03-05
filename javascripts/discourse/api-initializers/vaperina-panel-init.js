@@ -131,8 +131,8 @@ export default {
               component.set("stinkinBadges", stinkinBadges);
             });
             
-            ajax("/read.json").then (function(result) {
-              const lastRead = result.topics;
+            ajax("/u/" + username + "/read.json").then (function(result) {
+              const lastRead = result.user.topics;
               component.set("lastRead", lastRead);
             });
           }
