@@ -1,4 +1,4 @@
 vaperina_panel:
-  default: false
+  default: true
   description:
     en: Vaperina Panel
