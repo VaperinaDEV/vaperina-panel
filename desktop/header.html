@@ -32,10 +32,10 @@ if (getVaperinaPanel()) {
           body.classList.remove(stickyClass);
         }
       }).observe(anchor);
-      if (body.classList.contains(!stickyClass)) {
-        ogCreateButton.classList.add('hidden');
-      } else {
+      if (body.classList.contains(stickyClass)) {
         ogCreateButton.classList.remove('hidden');
+      } else {
+        ogCreateButton.classList.add('hidden');
       }
     }
   });
