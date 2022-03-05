@@ -106,6 +106,6 @@ export default DropdownSelectBoxComponent.extend({
           categoryId: categoryId,
         });
       }
-    },
-  }
+    }
+  },
 });
