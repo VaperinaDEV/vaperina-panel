@@ -16,86 +16,77 @@ function getUser() {
   return user;
 }
 
-function getVaperinaPanel() {
-  let pref = localStorage.getItem("vaperinaPanel");
-  let result = settings.default_enabled;
-  if (pref !== null) {
-    result = pref === "true";
-  }
-  return result;
-}
-
 if (!getVaperinaPanel()) {
 
-createWidget('vp-avatar', {
-  tagName: 'div.vp-avatar',
-  
-  userAvatarUrl() {
-    let rawSize = getRawSize;
-    return this.user.get('avatar_template').replace("{size}", rawSize(45));
-  },
+  createWidget('vp-avatar', {
+    tagName: 'div.vp-avatar',
 
-  html() {
-    this.user = getUser();
-    return [
-      this.userAvatar(),
-    ];
-  },
+    userAvatarUrl() {
+      let rawSize = getRawSize;
+      return this.user.get('avatar_template').replace("{size}", rawSize(45));
+    },
 
-  linkToUser() {
-    return {
-      href: `/u/${this.user.get('username')}/summary`,
-    };
-  },
+    html() {
+      this.user = getUser();
+      return [
+        this.userAvatar(),
+      ];
+    },
 
-  userAvatar() {
-    return h('a', this.linkToUser(), [
-      h('img.avatar', {
-        loading: "lazy",
-        width: 45,
-        height: 45,
-        src: getURLWithCDN(this.userAvatarUrl())
-      })
-    ]);
-  },
-});
+    linkToUser() {
+      return {
+        href: `/u/${this.user.get('username')}/summary`,
+      };
+    },
 
-createWidget('vp-topic', {
-  tagName: 'div.vp-topic',
-  
-  html() {
-    let container = Discourse.__container__;
-    let ntb_text = "Írj egy új témát...";
-    let ntb_icon = iconNode('pen');
-    let ntb_button_class = "btn btn-default btn btn-icon-text new-create-topic";
-    let ntb_button_helper = "button#new-create-topic";
-    let ntb_label_helper = "span.d-button-label";
-    const composerModal = require("discourse/models/composer").default;
-    const composerController = container.lookup("controller:composer");
+    userAvatar() {
+      return h('a', this.linkToUser(), [
+        h('img.avatar', {
+          loading: "lazy",
+          width: 45,
+          height: 45,
+          src: getURLWithCDN(this.userAvatarUrl())
+        })
+      ]);
+    },
+  });
 
-    const createTopic = function() {
-      const controller = container.lookup("controller:navigation/category"),
-        category = controller.get("category.id"),
-        topicCategory = container
-          .lookup("route:topic")
-          .get("context.category.id"),
-        categoryd = topicCategory ? topicCategory : category;
+  createWidget('vp-topic', {
+    tagName: 'div.vp-topic',
 
-      composerController.open({
-        action: composerModal.CREATE_TOPIC,
-        categoryId: categoryd,
-        draftKey: composerModal.draft_key || composerModal.NEW_TOPIC_KEY
-      });
-    };
-    
-    return h(
-      ntb_button_helper,
-      {
-        className: ntb_button_class,
-        onclick: createTopic
-      },
-      [ntb_icon, h(ntb_label_helper, ntb_text)]
-    );
-  },
-});
+    html() {
+      let container = Discourse.__container__;
+      let ntb_text = "Írj egy új témát...";
+      let ntb_icon = iconNode('pen');
+      let ntb_button_class = "btn btn-default btn btn-icon-text new-create-topic";
+      let ntb_button_helper = "button#new-create-topic";
+      let ntb_label_helper = "span.d-button-label";
+      const composerModal = require("discourse/models/composer").default;
+      const composerController = container.lookup("controller:composer");
+
+      const createTopic = function() {
+        const controller = container.lookup("controller:navigation/category"),
+          category = controller.get("category.id"),
+          topicCategory = container
+            .lookup("route:topic")
+            .get("context.category.id"),
+          categoryd = topicCategory ? topicCategory : category;
+
+        composerController.open({
+          action: composerModal.CREATE_TOPIC,
+          categoryId: categoryd,
+          draftKey: composerModal.draft_key || composerModal.NEW_TOPIC_KEY
+        });
+      };
+
+      return h(
+        ntb_button_helper,
+        {
+          className: ntb_button_class,
+          onclick: createTopic
+        },
+        [ntb_icon, h(ntb_label_helper, ntb_text)]
+      );
+    },
+  });
 }
