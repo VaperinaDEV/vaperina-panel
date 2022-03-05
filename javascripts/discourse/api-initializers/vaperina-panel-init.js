@@ -5,13 +5,15 @@ import { getURLWithCDN } from "discourse-common/lib/get-url";
 export default {
   name: "vaperina-panel",
   initialize() {
-    function getVaperinaPanel() {
-      let pref = localStorage.getItem("vaperinaPanel");
-
-      return pref;
-    }
     withPluginApi("0.8.7", (api) => {
-
+      function getVaperinaPanel() {
+        let pref = localStorage.getItem("vaperinaPanel");
+        let result = settings.default_enabled;
+        if (pref !== null) {
+          result = pref === "true";
+        }
+        return result;
+      }
       // technically we only want to amend current user here
       api.modifyClass("model:user", {
         vaperinaPanel: function() {
