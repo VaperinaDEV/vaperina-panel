@@ -31,8 +31,6 @@ if (getVaperinaPanel()) {
       new IntersectionObserver(entries => {
         if (!entries[0].isIntersecting) {
           body.classList.add(stickyClass);
-          ogCreateButtonSticky.classList.remove('hidden');
-          ogNewTopicDropSticky.classList.remove('hidden');
         } else {
           body.classList.remove(stickyClass);
           ogCreateButton.classList.add('hidden');
