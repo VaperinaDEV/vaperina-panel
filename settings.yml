@@ -1,4 +1,4 @@
-default_enabled:
+vaperina_panel:
   default: false
   description:
-    en: Enable Vaperina Panel
+    en: Vaperina Panel
