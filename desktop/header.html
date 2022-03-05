@@ -22,7 +22,8 @@ if (getVaperinaPanel()) {
     @on("didInsertElement")
     stickyHeaderCheck() {
       const anchor = document.querySelector(".vaperina-panel");
-      const body = document.querySelector("body");;
+      const mobileView = this.site.mobileView;
+      const body = document.querySelector("body");
       const ogCreateButton = document.querySelector('#create-topic');      
       const ogNewTopicDrop = document.querySelector('.after-create-topic-button-outlet.new-topic-dropdown');
 
@@ -32,10 +33,14 @@ if (getVaperinaPanel()) {
         } else {
           body.classList.remove(stickyClass);
         }
-        if (body.classList.contains(stickyClass)) {
+        if (body.classList.contains(stickyClass) && !mobileView) {
           ogCreateButton.classList.remove('hidden');
           ogNewTopicDrop.classList.remove('hidden');
         } else {
+          ogCreateButton.classList.add('hidden');
+          ogNewTopicDrop.classList.add('hidden');
+        }
+        if (mobileView) {
           ogCreateButton.classList.add('hidden');
           ogNewTopicDrop.classList.add('hidden');
         }
