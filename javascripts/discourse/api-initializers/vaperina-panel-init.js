@@ -127,7 +127,7 @@ export default {
   },
 };
 
-export default DropdownSelectBoxComponent.extend({
+DropdownSelectBoxComponent.extend({
   name: "vaperina-new-topic-drop",
   initialize() {
     withPluginApi("0.8.7", (api) => {
