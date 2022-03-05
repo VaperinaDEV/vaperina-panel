@@ -13,7 +13,7 @@ export default {
         localStorage.getItem("vaperinaPanel");
       }
       
-      if (!getVaperinaPanel()) {
+      if (!getVaperinaPanel() || !vaperinaPanelSetting) {
         api.registerConnectorClass("discovery-list-container-top", "vaperina-panel", {
           shouldRender() {
             return false;
