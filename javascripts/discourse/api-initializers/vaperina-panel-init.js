@@ -38,7 +38,7 @@ export default {
         }
       });
 
-      if (!getVaperinaPanel()) {
+      if (getVaperinaPanel()) {
         api.onAppEvent("composer:closed", () => {
           const homePage = document.querySelector('.navigation-topics');
           const categoryPage = document.querySelector('.category .list-container');
