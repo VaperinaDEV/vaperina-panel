@@ -11,7 +11,7 @@ export default {
       function getVaperinaPanel() {
         let pref = localStorage.getItem("vaperinaPanel");
         if (pref !== null) {
-          pref === "true";
+          return pref;
         }
       }
       
