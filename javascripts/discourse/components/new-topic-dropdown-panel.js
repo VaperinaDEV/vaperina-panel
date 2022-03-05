@@ -61,53 +61,53 @@ export default DropdownSelectBoxComponent.extend({
       }
       return items;
     }),
+  }
 
-    @action
-    onChange(selectedAction) {
+  @action
+  onChange(selectedAction) {
 
-      if (selectedAction === "new_question") {
-        const composerController = getOwner(this).lookup("controller:composer");
-        let categoryId = 49;
+    if (selectedAction === "new_question") {
+      const composerController = getOwner(this).lookup("controller:composer");
+      let categoryId = 49;
 
-        composerController.open({
-          action: Composer.CREATE_TOPIC,
-          draftKey: Composer.NEW_TOPIC_KEY,
-          categoryId: categoryId,
-        });
-      }
+      composerController.open({
+        action: Composer.CREATE_TOPIC,
+        draftKey: Composer.NEW_TOPIC_KEY,
+        categoryId: categoryId,
+      });
+    }
 
-      if (selectedAction === "new_comment") {
-        const composerController = getOwner(this).lookup("controller:composer");
-        let categoryId = 7;
+    if (selectedAction === "new_comment") {
+      const composerController = getOwner(this).lookup("controller:composer");
+      let categoryId = 7;
 
-        composerController.open({
-          action: Composer.CREATE_TOPIC,
-          draftKey: Composer.NEW_TOPIC_KEY,
-          categoryId: categoryId,
-        });
-      }
+      composerController.open({
+        action: Composer.CREATE_TOPIC,
+        draftKey: Composer.NEW_TOPIC_KEY,
+        categoryId: categoryId,
+      });
+    }
 
-      if (selectedAction === "new_handcheck") {
-        const composerController = getOwner(this).lookup("controller:composer");
-        let categoryId = 5;
+    if (selectedAction === "new_handcheck") {
+      const composerController = getOwner(this).lookup("controller:composer");
+      let categoryId = 5;
 
-        composerController.open({
-          action: Composer.CREATE_TOPIC,
-          draftKey: Composer.NEW_TOPIC_KEY,
-          categoryId: categoryId,
-        });
-      }
+      composerController.open({
+        action: Composer.CREATE_TOPIC,
+        draftKey: Composer.NEW_TOPIC_KEY,
+        categoryId: categoryId,
+      });
+    }
 
-      if (selectedAction === "new_ad") {
-        const composerController = getOwner(this).lookup("controller:composer");
-        let categoryId = 31;
+    if (selectedAction === "new_ad") {
+      const composerController = getOwner(this).lookup("controller:composer");
+      let categoryId = 31;
 
-        composerController.open({
-          action: Composer.CREATE_TOPIC,
-          draftKey: Composer.NEW_TOPIC_KEY,
-          categoryId: categoryId,
-        });
-      }
+      composerController.open({
+        action: Composer.CREATE_TOPIC,
+        draftKey: Composer.NEW_TOPIC_KEY,
+        categoryId: categoryId,
+      });
     }
   },
 });
