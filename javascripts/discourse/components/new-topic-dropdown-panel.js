@@ -4,6 +4,15 @@ import Composer from "discourse/models/composer";
 import DropdownSelectBoxComponent from "select-kit/components/dropdown-select-box";
 import { computed } from "@ember/object";
 
+function getVaperinaPanel() {
+  let pref = localStorage.getItem("vaperinaPanel");
+  let result = settings.default_enabled;
+  if (pref !== null) {
+    result = pref === "true";
+  }
+  return result;
+}
+
 export default DropdownSelectBoxComponent.extend({
   classNames: ["new-topic-dropdown-panel"],
 
@@ -15,52 +24,41 @@ export default DropdownSelectBoxComponent.extend({
     showCaret: true,
     none: "topic.create",
   },
-
+  if (!getVaperinaPanel()) {
   content: computed(function () {
-    
-    function getVaperinaPanel() {
-      let pref = localStorage.getItem("vaperinaPanel");
-      let result = settings.default_enabled;
-      if (pref !== null) {
-        result = pref === "true";
-      }
-      return result;
-    }
-    
-    if (!getVaperinaPanel()) {
       
-      const hideForNewUser = this.currentUser && this.currentUser.trust_level > 0;
+    const hideForNewUser = this.currentUser && this.currentUser.trust_level > 0;
 
-      const items = [
-        {
-          id: "new_question",
-          name: "Kérdésed van?",
-          description: "Ne habozz, itt mindenki szívesen segít...",
-          icon: "question-circle",
-        },
-      ];
+    const items = [
+      {
+        id: "new_question",
+        name: "Kérdésed van?",
+        description: "Ne habozz, itt mindenki szívesen segít...",
+        icon: "question-circle",
+      },
+    ];
+    items.push({
+      id: "new_comment",
+      name: "Társalgó",
+      description: "Dobj fel egy érdekes témát...",
+      icon: "comment",
+    });
+    items.push({
+      id: "new_handcheck",
+      name: "Handcheck",
+      description: "Vapemail? Na, hadd lássuk...",
+      icon: "camera",
+    });
+    if (hideForNewUser) {
       items.push({
-        id: "new_comment",
-        name: "Társalgó",
-        description: "Dobj fel egy érdekes témát...",
-        icon: "comment",
+        id: "new_ad",
+        name: "Hirdetésfeladás",
+        description: "Hirdess gyorsan, egyszerűen...",
+        icon: "tags",
       });
-      items.push({
-        id: "new_handcheck",
-        name: "Handcheck",
-        description: "Vapemail? Na, hadd lássuk...",
-        icon: "camera",
-      });
-      if (hideForNewUser) {
-        items.push({
-          id: "new_ad",
-          name: "Hirdetésfeladás",
-          description: "Hirdess gyorsan, egyszerűen...",
-          icon: "tags",
-        });
-      }
-      return items;
-    }),
+    }
+    return items;
+  }),
   }
 
   @action
