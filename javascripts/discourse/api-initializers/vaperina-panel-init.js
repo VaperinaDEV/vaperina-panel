@@ -12,8 +12,8 @@ export default {
         let result = settings.vaperina_panel;
         if (pref !== null) {
           result = pref === "true";
-        }
-        return result;
+        } 
+        return pref;
       }
       
       if (!getVaperinaPanel()) {
