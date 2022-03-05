@@ -8,6 +8,13 @@ export default {
     withPluginApi("0.8.7", (api) => {
         
       if (api.getCurrentUser() === null) return false;
+      
+      api.registerConnectorClass("discovery-list-container-top", "vaperina-panel", (helper) => {
+        return helper.attach("vp-avatar", helper);
+      });
+      api.registerConnectorClass("discovery-list-container-top", "vaperina-panel", (helper) => {
+        return helper.attach("vp-topic", helper);
+      });
         
       api.onAppEvent("composer:closed", () => {
         const homePage = document.querySelector('.navigation-topics');
