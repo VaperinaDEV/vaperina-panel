@@ -18,7 +18,7 @@ export default {
 
       // technically we only want to amend current user here
       api.modifyClass("model:user", {
-        mobileSwitchTitle: function() {
+        vaperinaPanel: function() {
           return getVaperinaPanel();
         }.property()
       });
