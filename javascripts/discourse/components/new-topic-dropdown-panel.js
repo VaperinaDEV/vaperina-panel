@@ -24,6 +24,14 @@ export default DropdownSelectBoxComponent.extend({
     showCaret: true,
     none: "topic.create",
   },
+  function getVaperinaPanel() {
+    let pref = localStorage.getItem("vaperinaPanel");
+    let result = settings.default_enabled;
+    if (pref !== null) {
+      result = pref === "true";
+    }
+    return result;
+  }
   if (!getVaperinaPanel()) {
   content: computed(function () {
       
