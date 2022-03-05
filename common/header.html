@@ -8,11 +8,13 @@
     return result;
   }
   
-  api.registerConnectorClass("discovery-list-container-top", "vaperina-panel", {
-    if (!getVaperinaPanel()) {
-      return false;
-    }
-  });
+  if (!getVaperinaPanel()) {
+    api.registerConnectorClass("discovery-list-container-top", "vaperina-panel", {
+      setupComponent() {
+        return false;
+      }
+    });
+  }
   
   // technically we only want to amend current user here
   api.modifyClass("model:user", {
