@@ -13,13 +13,13 @@ function getVaperinaPanel() {
 
 if (getVaperinaPanel()) {
 
-  const homePage = document.querySelector('.navigation-topics');
-  const categoryPage = document.querySelector('.category-header');
-  const tagPage = document.querySelector('.tags-page');
-
-  if (homePage || categoryPage || tagPage) {
-
     if (!"IntersectionObserver" in window) return;
+    
+   const homePage = document.querySelector('.navigation-topics');
+   const categoryPage = document.querySelector('.category-header');
+   const tagPage = document.querySelector('.tags-page');
+
+   if (homePage || categoryPage || tagPage) {
 
     const { on } = require("discourse-common/utils/decorators");
 
