@@ -13,27 +13,34 @@ function getVaperinaPanel() {
 
 if (getVaperinaPanel()) {
 
-  if (!"IntersectionObserver" in window) return;
+  const homePage = document.querySelector('.navigation-topics');
+  const categoryPage = document.querySelector('.category-header');
+  const tagPage = document.querySelector('.tags-page');
 
-  const { on } = require("discourse-common/utils/decorators");
+  if (homePage || categoryPage || tagPage) {
 
-  const stickyClass = "sticky-create-topic";
+    if (!"IntersectionObserver" in window) return;
 
-  api.modifyClass("component:create-topic-button", {
-    pluginId: "sticky-create-topic",
-    @on("didInsertElement")
-    stickyHeaderCheck() {
-      const anchor = document.querySelector(".create-topic-visibility");
-      const body = document.querySelector("body");
+    const { on } = require("discourse-common/utils/decorators");
 
-      new IntersectionObserver(entries => {
-        if (!entries[0].isIntersecting) {
-          body.classList.add(stickyClass);
-        } else {
-          body.classList.remove(stickyClass);
-        }
-      }).observe(anchor);
-    }
-  });
+    const stickyClass = "sticky-create-topic";
+
+    api.modifyClass("component:create-topic-button", {
+      pluginId: "sticky-create-topic",
+      @on("didInsertElement")
+      stickyHeaderCheck() {
+        const anchor = document.querySelector(".create-topic-visibility");
+        const body = document.querySelector("body");
+
+        new IntersectionObserver(entries => {
+          if (!entries[0].isIntersecting) {
+            body.classList.add(stickyClass);
+          } else {
+            body.classList.remove(stickyClass);
+          }
+        }).observe(anchor);
+      }
+    });
+  }
 }
 </script>
