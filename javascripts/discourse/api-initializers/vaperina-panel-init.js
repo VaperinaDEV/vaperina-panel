@@ -53,11 +53,12 @@ export default {
 
         api.onAppEvent("composer:closed", () => {
           const homePage = document.querySelector('.navigation-topics');
-          const categoryPage = document.querySelector('.category .list-container');
+          const categoryPage = document.querySelector('.category-header');
+          const tagPage = document.querySelector('.tags-page');
           const ogCreateHasDraft = document.querySelector('#create-topic.open-draft');
           const ogCreateNoDraft = document.querySelector('#create-topic');
 
-          if (homePage && ogCreateHasDraft || categoryPage && ogCreateHasDraft) {
+          if (homePage && ogCreateHasDraft || categoryPage && ogCreateHasDraft || tagPage && ogCreateHasDraft) {
             const newCreateButton = document.querySelector('#new-create-topic');
             const vpNewTopic = document.querySelector('.vp-new-topic');
             const newCreateButtonLabel = document.querySelector('.new-create-topic .d-button-label');
@@ -65,7 +66,7 @@ export default {
             vpNewTopic.classList.add('open-draft');
             newCreateButtonLabel.innerHTML = "Vázlat folytatása...";
           } else {
-            if (homePage && ogCreateNoDraft || categoryPage && ogCreateNoDraft) {
+            if (homePage && ogCreateNoDraft || categoryPage && ogCreateNoDraft || tagPage && ogCreateNoDraft) {
               const newCreateButton = document.querySelector('#new-create-topic');
               const vpNewTopic = document.querySelector('.vp-new-topic');
               const newCreateButtonLabel = document.querySelector('.new-create-topic .d-button-label');
@@ -79,14 +80,15 @@ export default {
         api.onPageChange((url, title) => {
           const body = document.querySelector('body');
           const homePage = document.querySelector('.navigation-topics');
-          const categoryPage = document.querySelector('.category .list-container');
+          const categoryPage = document.querySelector('.category-header');
+          const tagPage = document.querySelector('.tags-page');
           const ogCreateHasDraft = document.querySelector('#create-topic.open-draft');
           
           if (homePage || categoryPage) {
             body.classList.add('vp');
           }
 
-          if (homePage && ogCreateHasDraft || categoryPage && ogCreateHasDraft) {
+          if (homePage && ogCreateHasDraft || categoryPage && ogCreateHasDraft || tagPage && ogCreateHasDraft) {
             const newCreateButton = document.querySelector('#new-create-topic');
             const vpNewTopic = document.querySelector('.vp-new-topic');
             const newCreateButtonLabel = document.querySelector('.new-create-topic .d-button-label');
@@ -97,11 +99,11 @@ export default {
 
           const ogCreateDisable = document.querySelector('#create-topic');
 
-          if (homePage && ogCreateDisable.hasAttribute("disabled") || categoryPage && ogCreateDisable.hasAttribute("disabled")) {
+          if (homePage && ogCreateDisable.hasAttribute("disabled") || categoryPage && ogCreateDisable.hasAttribute("disabled") || tagPage && ogCreateDisable.hasAttribute("disabled")) {
             const newCreateButton = document.querySelector('#new-create-topic');
             newCreateButton.disabled = true;
           } else {
-            if (homePage && ogCreateDisable || categoryPage && ogCreateDisable) {
+            if (homePage && ogCreateDisable || categoryPage && ogCreateDisable || tagPage && ogCreateDisable) {
               const newCreateButton = document.querySelector('#new-create-topic');
               newCreateButton.disabled = false;
             }
