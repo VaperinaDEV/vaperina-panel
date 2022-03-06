@@ -91,7 +91,7 @@ export default {
           if (!homePage && bodySticky || !categoryPage && bodySticky || !tagPage && bodySticky) {
             bodySticky.classList.remove('sticky-create-topic');
           } else {
-            bodySticky.classList.add('sticky-create-topic');
+            return;
           }
           
           if (homePage && ogCreateHasDraft || categoryPage && ogCreateHasDraft || tagPage && ogCreateHasDraft) {
