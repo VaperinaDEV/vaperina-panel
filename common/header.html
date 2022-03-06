@@ -24,7 +24,8 @@ if (getVaperinaPanel()) {
       const anchor = document.querySelector(".vaperina-panel");
       const mobileView = this.site.mobileView;
       const body = document.querySelector("body");
-      const ogCreateButton = document.querySelector('#create-topic');      
+      const ogCreateButton = document.querySelector('#create-topic');
+      const ogCreateDraftButton = document.querySelector('#create-topic .open-draft');
       const ogNewTopicDrop = document.querySelector('.after-create-topic-button-outlet.new-topic-dropdown');
 
       new IntersectionObserver(entries => {
@@ -38,10 +39,12 @@ if (getVaperinaPanel()) {
           ogNewTopicDrop.classList.remove('hidden');
         } else {
           ogCreateButton.classList.add('hidden');
+          ogCreateDraftButton.classList.add('hidden');
           ogNewTopicDrop.classList.add('hidden');
         }
         if (mobileView) {
           ogCreateButton.classList.add('hidden');
+          ogCreateDraftButton.classList.add('hidden');
           ogNewTopicDrop.classList.add('hidden');
         }
       }).observe(anchor);
