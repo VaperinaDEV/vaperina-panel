@@ -36,7 +36,7 @@ if (getVaperinaPanel()) {
 }
 
 if (!getVaperinaPanel()) {
-  api.registerConnectorClass("discovery-list-container-top", "create-topic-visibility", {
+  api.registerConnectorClass("before-topic-list", "create-topic-visibility", {
     shouldRender() {
       return false;
     }
