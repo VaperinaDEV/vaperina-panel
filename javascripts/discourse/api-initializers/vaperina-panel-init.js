@@ -84,7 +84,7 @@ export default {
           const tagPage = document.querySelector('.tags-page');
           const ogCreateHasDraft = document.querySelector('#create-topic.open-draft');
           
-          if (homePage || categoryPage) {
+          if (homePage || categoryPage || tagPage) {
             body.classList.add('vp');
           }
 
