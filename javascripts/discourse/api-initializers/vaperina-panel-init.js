@@ -96,16 +96,6 @@ export default {
             vpNewTopic.classList.add('open-draft');
             newCreateButtonLabel.innerHTML = "Vázlat folytatása...";
           }
-          
-          const createTopicDisabled = document.querySelector('button#create-topic[disabled]');
-          const newCreateButton = document.querySelector('#new-create-topic');
-          if (categoryPage && createTopicDisabled || tagPage && createTopicDisabled) {
-            newCreateButton.classList.add('itsdisabled');
-          } else {
-            if (!categoryPage || !tagPage) {
-              newCreateButton.classList.remove('itsdisabled');
-            }
-          }
         });
 
         api.registerConnectorClass("discovery-list-container-top", "vaperina-panel", {
