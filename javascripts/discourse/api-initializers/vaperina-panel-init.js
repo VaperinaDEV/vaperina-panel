@@ -76,8 +76,6 @@ export default {
             }
           }
         });
-
-        api.onPageChange(() => {
           const body = document.querySelector('body');
           const homePage = document.querySelector('.navigation-topics');
           const categoryPage = document.querySelector('.category-header');
@@ -92,6 +90,15 @@ export default {
           if (body.classList.contains('vp')) {
             ogCreateNoDraft.style.display = 'none';
           }
+
+        api.onPageChange(() => {
+          const body = document.querySelector('body');
+          const homePage = document.querySelector('.navigation-topics');
+          const categoryPage = document.querySelector('.category-header');
+          const tagPage = document.querySelector('.tags-page');
+          const ogCreateNoDraft = document.querySelector('#create-topic');
+          const ogCreateHasDraft = document.querySelector('#create-topic.open-draft');
+          
 
           if (homePage && ogCreateHasDraft || categoryPage && ogCreateHasDraft || tagPage && ogCreateHasDraft) {
             const newCreateButton = document.querySelector('#new-create-topic');
