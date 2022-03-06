@@ -1,13 +1,17 @@
-body.vp.sticky-create-topic {
-  #main-outlet {
-    #create-topic,
-    .after-create-topic-button-outlet.new-topic-dropdown {
-      display: flex;
+body.vp {
+  &.sticky-create-topic {
+    #main-outlet {
+      #create-topic,
+      .after-create-topic-button-outlet.new-topic-dropdown {
+        display: flex;
+      }
     }
   }
-}
-
-body.vp .create-topic-visibility {
-  position: absolute;
-  height: 300px;
+  .discovery-list-container-top-outlet.search-banner {
+    display: none;
+  }
+  .create-topic-visibility {
+    position: absolute;
+    height: 250px;
+  }
 }
