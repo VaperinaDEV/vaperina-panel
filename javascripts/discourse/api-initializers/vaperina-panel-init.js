@@ -84,16 +84,7 @@ export default {
           const homePage = document.querySelector('.navigation-topics');
           const categoryPage = document.querySelector('.category-header');
           const tagPage = document.querySelector('.tags-page');
-          
           const ogCreateHasDraft = document.querySelector('#create-topic.open-draft');    
-          const body = document.querySelector('body'); 
-          const bodySticky = body.classList.contains('sticky-create-topic');
-          
-          if (!homePage && bodySticky || !categoryPage && bodySticky || !tagPage && bodySticky) {
-            body.classList.remove('sticky-create-topic');
-          } else {
-            body.classList.add('sticky-create-topic');
-          }
           
           if (homePage && ogCreateHasDraft || categoryPage && ogCreateHasDraft || tagPage && ogCreateHasDraft) {
             const newCreateButton = document.querySelector('#new-create-topic');
