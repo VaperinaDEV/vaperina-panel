@@ -170,44 +170,35 @@
 
 // Original Create-topic button
 
-#create-topic {
-  display: flex;
-  flex: 1 1 auto;
-  justify-content: flex-start;
-  order: 5;
-  width: 100%;
-  height: 40px;
-  color: var(--primary-high);
-  border: 1px solid var(--primary-high);
-  background: var(--secondary);
-  border-radius: 2em;
-  transition: background 0.25s ease-out;
+body.vp #create-topic {
+  height: 40px !important;
+  color: var(--primary-high) !important;
+  border: 1px solid var(--primary-high) !important;
+  background: var(--secondary) !important;
+  border-radius: 2em !important;
   .d-icon {
-    color: var(--primary-high);
-    margin-right: 0.5em;
-    margin-left: 0.5em;
+    color: var(--primary-high) !important;
   }
   &:hover,
   &:focus {
-    background: var(--primary-low);
+    background: var(--primary-low) !important;
   }
   &.open-draft {
-    background: var(--primary-medium);
-    border: 1px solid var(--primary-high);
-    color: var(--secondary);
+    background: var(--primary-medium) !important;
+    border: 1px solid var(--primary-high) !important;
+    color: var(--secondary) !important;
     .d-icon {
-      color: var(--secondary);
+      color: var(--secondary) !important;
     }
     &:focus,
     &:hover {
-      background: var(--primary-high);
+      background: var(--primary-high) !important;
     }
   }
 }
 
-.select-kit {
+body.vp .select-kit {
   &.new-topic-dropdown .btn {
-    width: 3.5em;
     height: 40px;
     background: var(--secondary);
     border-radius: 0 2em 2em 0;
@@ -230,7 +221,7 @@
   }
 }
 
-#create-topic {
+body.vp #create-topic {
   &.open-draft {
     + .new-topic-dropdown .btn {
       background: var(--primary-medium);
