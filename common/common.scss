@@ -172,7 +172,7 @@ body.vp {
   #main-outlet {
     #create-topic,
     .new-topic-dropdown {
-      display: none;
+      display: none !important;
     }
   }
 }
