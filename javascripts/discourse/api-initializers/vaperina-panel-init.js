@@ -57,7 +57,7 @@ export default {
         api.onAppEvent("composer:closed", () => {
           const body = document.querySelector('body');
           const homePage = body.classList.contains('navigation-topics');
-          const categoryPage = body.classList.contains('category');
+          const categoryPage = document.querySelector('body[class*="category-"]:not(.archetype-regular):not(.archetype-banner)');
           const tagPage = body.classList.contains('tags-page');
           const ogCreateHasDraft = document.querySelector('#create-topic.open-draft');
           const ogCreateNoDraft = document.querySelector('#create-topic');
@@ -84,7 +84,7 @@ export default {
         api.onPageChange(() => {
           const body = document.querySelector('body');
           const homePage = body.classList.contains('navigation-topics');
-          const categoryPage = body.classList.contains('category');
+          const categoryPage = document.querySelector('body[class*="category-"]:not(.archetype-regular):not(.archetype-banner)');
           const tagPage = body.classList.contains('tags-page');
           const topicPage = body.classList.contains('archetype-regular');
           const ogCreateHasDraft = document.querySelector('#create-topic.open-draft');    
@@ -101,7 +101,7 @@ export default {
           const createTopicDisabled = document.querySelector('#create-topic[disabled]');
           const newCreateButton = document.querySelector('#new-create-topic');
           
-          if (categoryPage && !topicPage && createTopicDisabled || tagPage && !topicPage && createTopicDisabled) {
+          if (categoryPage && createTopicDisabled || tagPage && createTopicDisabled) {
             newCreateButton.disabled = true;
           } else {
             newCreateButton.disabled = false;
