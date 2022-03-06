@@ -30,13 +30,11 @@ if (getVaperinaPanel()) {
       const tagPage = document.querySelector('.tags-page');
 
       new IntersectionObserver(entries => {
-      if (homePage || categoryPage || tagPage) {
-        if (!entries[0].isIntersecting) {
+        if (!entries[0].isIntersecting && homePage || !entries[0].isIntersecting && categoryPage || !entries[0].isIntersecting && tagPage) {
           body.classList.add(stickyClass);
         } else {
           body.classList.remove(stickyClass);
         }
-      }
       }).observe(anchor);
     }
   });
