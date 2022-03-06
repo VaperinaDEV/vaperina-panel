@@ -22,6 +22,11 @@ export default {
             return false;
           }
         });
+        api.registerConnectorClass("discovery-list-container-top", "search-banner", {
+          shouldRender() {
+            return false;
+          }
+        });
       }
       // technically we only want to amend current user here
       api.modifyClass("model:user", {
