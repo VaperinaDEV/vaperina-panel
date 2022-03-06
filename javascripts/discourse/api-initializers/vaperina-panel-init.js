@@ -87,6 +87,8 @@ export default {
           const tagPage = document.querySelector('.tags-page');
           const ogCreateNoDraft = document.querySelector('#create-topic');
           const ogCreateHasDraft = document.querySelector('#create-topic.open-draft');
+          
+          body.classList.add('vp');
 
           if (homePage && ogCreateHasDraft || categoryPage && ogCreateHasDraft || tagPage && ogCreateHasDraft) {
             const newCreateButton = document.querySelector('#new-create-topic');
