@@ -55,9 +55,10 @@ export default {
         body.classList.add('vp');
 
         api.onAppEvent("composer:closed", () => {
-          const homePage = document.querySelector('.navigation-topics');
-          const categoryPage = document.querySelector('.category-header');
-          const tagPage = document.querySelector('.tags-page');
+          const body = document.querySelector('body');
+          const homePage = body.classList.contains('navigation-topics');
+          const categoryPage = body.classList.contains('category-header');
+          const tagPage = body.classList.contains('tags-page');
           const ogCreateHasDraft = document.querySelector('#create-topic.open-draft');
           const ogCreateNoDraft = document.querySelector('#create-topic');
 
@@ -101,7 +102,9 @@ export default {
           if (categoryPage && createTopicDisabled || tagPage && createTopicDisabled) {
             newCreateButton.classList.add('itsdisabled');
           } else {
-            newCreateButton.classList.remove('itsdisabled');
+            if (!categoryPage || !tagPage) {
+              newCreateButton.classList.remove('itsdisabled');
+            }
           }
         });
 
