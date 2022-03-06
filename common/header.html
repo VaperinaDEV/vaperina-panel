@@ -39,12 +39,13 @@ if (getVaperinaPanel()) {
           ogNewTopicDrop.classList.remove('hidden');
         } else {
           ogCreateButton.classList.add('hidden');
-          ogCreateDraftButton.classList.add('hidden');
           ogNewTopicDrop.classList.add('hidden');
+        }
+        if (ogCreateDraftButton) {
+          ogCreateDraftButton.classList.add('hidden');
         }
         if (mobileView) {
           ogCreateButton.classList.add('hidden');
-          ogCreateDraftButton.classList.add('hidden');
           ogNewTopicDrop.classList.add('hidden');
         }
       }).observe(anchor);
