@@ -87,10 +87,8 @@ export default {
           const ogCreateHasDraft = document.querySelector('#create-topic.open-draft');    
           const body = document.querySelector('body');
           
-          if (homePage || categoryPage || tagPage) {
-            body.classList.add('vp');
-          } else {
-            body.classList.remove('vp');
+          if (!homePage && body.classList.contains('sticky-create-topic')) {
+            body.classList.remove('sticky-create-topic');
           }
           
           if (homePage && ogCreateHasDraft || categoryPage && ogCreateHasDraft || tagPage && ogCreateHasDraft) {
