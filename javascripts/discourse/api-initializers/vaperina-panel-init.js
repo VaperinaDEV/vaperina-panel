@@ -85,7 +85,9 @@ export default {
           const ogCreateHasDraft = document.querySelector('#create-topic.open-draft');
           
           if (homePage || categoryPage || tagPage) {
-            body.classList.add('vp');
+            window.onbeforeunload = function() {
+              body.classList.add('vp');
+            }
           }
 
           if (homePage && ogCreateHasDraft || categoryPage && ogCreateHasDraft || tagPage && ogCreateHasDraft) {
