@@ -173,6 +173,7 @@ body.vp {
     #create-topic,
     .after-create-topic-button-outlet.new-topic-dropdown {
       display: none;
+      opacity: 0;
     }
   }
 }
