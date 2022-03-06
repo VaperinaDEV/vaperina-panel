@@ -57,7 +57,7 @@ export default {
         api.onAppEvent("composer:closed", () => {
           const body = document.querySelector('body');
           const homePage = body.classList.contains('navigation-topics');
-          const categoryPage = body.classList.contains('category-header');
+          const categoryPage = body.classList.contains('category');
           const tagPage = body.classList.contains('tags-page');
           const ogCreateHasDraft = document.querySelector('#create-topic.open-draft');
           const ogCreateNoDraft = document.querySelector('#create-topic');
@@ -84,8 +84,9 @@ export default {
         api.onPageChange(() => {
           const body = document.querySelector('body');
           const homePage = body.classList.contains('navigation-topics');
-          const categoryPage = body.classList.contains('category-header');
+          const categoryPage = body.classList.contains('category');
           const tagPage = body.classList.contains('tags-page');
+          const topicPage = body.classList.contains('archetype-regular');
           const ogCreateHasDraft = document.querySelector('#create-topic.open-draft');    
           
           if (homePage && ogCreateHasDraft || categoryPage && ogCreateHasDraft || tagPage && ogCreateHasDraft) {
@@ -95,6 +96,15 @@ export default {
             newCreateButton.classList.add('open-draft');
             vpNewTopic.classList.add('open-draft');
             newCreateButtonLabel.innerHTML = "Vázlat folytatása...";
+          }
+          
+          const createTopicDisabled = document.querySelector('#create-topic').hasAttribute("disabled");
+          const newCreateButton = document.querySelector('#new-create-topic');
+          
+          if (categoryPage && !topicPage && createTopicDisabled || tagPage && !topicPage && createTopicDisabled) {
+            newCreateButton.disabled = true;
+          } else {
+            newCreateButton.disabled = false;
           }
         });
 
