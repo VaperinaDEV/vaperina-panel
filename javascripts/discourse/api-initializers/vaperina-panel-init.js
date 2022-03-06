@@ -82,10 +82,15 @@ export default {
           const homePage = document.querySelector('.navigation-topics');
           const categoryPage = document.querySelector('.category-header');
           const tagPage = document.querySelector('.tags-page');
+          const ogCreateNoDraft = document.querySelector('#create-topic');
           const ogCreateHasDraft = document.querySelector('#create-topic.open-draft');
           
           if (homePage || categoryPage || tagPage) {
             body.classList.add('vp');
+          }
+          
+          if (body.classList.contains('vp')) {
+            ogCreateNoDraft.style.display = 'none';
           }
 
           if (homePage && ogCreateHasDraft || categoryPage && ogCreateHasDraft || tagPage && ogCreateHasDraft) {
