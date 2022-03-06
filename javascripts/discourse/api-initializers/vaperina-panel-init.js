@@ -77,9 +77,14 @@ export default {
         });
 
         api.onPageChange((url, title) => {
+          const body = document.querySelector('body');
           const homePage = document.querySelector('.navigation-topics');
           const categoryPage = document.querySelector('.category .list-container');
           const ogCreateHasDraft = document.querySelector('#create-topic.open-draft');
+          
+          if (homePage || categoryPage) {
+            body.classList.add('vp');
+          }
 
           if (homePage && ogCreateHasDraft || categoryPage && ogCreateHasDraft) {
             const newCreateButton = document.querySelector('#new-create-topic');
