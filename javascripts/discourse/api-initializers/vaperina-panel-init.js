@@ -56,9 +56,9 @@ export default {
 
         api.onAppEvent("composer:closed", () => {
           const body = document.querySelector('body');
-          const homePage = document.querySelector('navigation-topics');
+          const homePage = document.querySelector('.navigation-topics');
           const categoryPage = document.querySelector('body[class*="category-"]:not(.archetype-regular):not(.archetype-banner)');
-          const tagPage = document.querySelector('tags-page');
+          const tagPage = document.querySelector('.tags-page');
           const ogCreateHasDraft = document.querySelector('#create-topic.open-draft');
           const ogCreateNoDraft = document.querySelector('#create-topic');
 
@@ -82,9 +82,9 @@ export default {
         });
 
         api.onPageChange(() => {
-          const homePage = document.querySelector('navigation-topics');
+          const homePage = document.querySelector('.navigation-topics');
           const categoryPage = document.querySelector('body[class*="category-"]:not(.archetype-regular):not(.archetype-banner)');
-          const tagPage = document.querySelector('tags-page');
+          const tagPage = document.querySelector('.tags-page');
           const ogCreateHasDraft = document.querySelector('#create-topic.open-draft');
           
           if (homePage && ogCreateHasDraft || categoryPage && ogCreateHasDraft || tagPage && ogCreateHasDraft) {
