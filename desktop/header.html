@@ -11,18 +11,17 @@ function getVaperinaPanel() {
   return result;
 }
 
-if (getVaperinaPanel()) {
+const homePage = document.querySelector('.navigation-topics');
+const categoryPage = document.querySelector('.category-header');
+const tagPage = document.querySelector('.tags-page');
+
+if (getVaperinaPanel() && homePage || getVaperinaPanel() && categoryPage || getVaperinaPanel() && tagPage) {
   
   if (!"IntersectionObserver" in window) return;
 
   const { on } = require("discourse-common/utils/decorators");
   
   const stickyClass = "sticky-create-topic";
-  const homePage = document.querySelector('.navigation-topics');
-  const categoryPage = document.querySelector('.category-header');
-  const tagPage = document.querySelector('.tags-page');
-  
-  if (homePage || categoryPage || tagPage) {
 
   api.modifyClass("component:create-topic-button", {
     pluginId: "sticky-create-topic",
@@ -40,6 +39,5 @@ if (getVaperinaPanel()) {
       }).observe(anchor);
     }
   });
-  }
 }
 </script>
