@@ -56,9 +56,9 @@ export default {
 
         api.onAppEvent("composer:closed", () => {
           const body = document.querySelector('body');
-          const homePage = body.classList.contains('navigation-topics');
+          const homePage = document.querySelector('navigation-topics');
           const categoryPage = document.querySelector('body[class*="category-"]:not(.archetype-regular):not(.archetype-banner)');
-          const tagPage = body.classList.contains('tags-page');
+          const tagPage = document.querySelector('tags-page');
           const ogCreateHasDraft = document.querySelector('#create-topic.open-draft');
           const ogCreateNoDraft = document.querySelector('#create-topic');
 
@@ -82,12 +82,16 @@ export default {
         });
 
         api.onPageChange(() => {
-          const body = document.querySelector('body');
-          const homePage = body.classList.contains('navigation-topics');
+          const bodySticky = document.querySelector('body.sticky-create-topic');
+          const mobileView = this.site.mobileView;
+          const homePage = document.querySelector('navigation-topics');
           const categoryPage = document.querySelector('body[class*="category-"]:not(.archetype-regular):not(.archetype-banner)');
-          const tagPage = body.classList.contains('tags-page');
-          const topicPage = body.classList.contains('archetype-regular');
-          const ogCreateHasDraft = document.querySelector('#create-topic.open-draft');    
+          const tagPage = document.querySelector('tags-page');
+          const ogCreateHasDraft = document.querySelector('#create-topic.open-draft');
+          
+          if (!homePage && bodySticky || !categoryPage && bodySticky || !tagPage && bodySticky) {
+            bodySticky.classList.remove('sticky-create-topic');
+          }
           
           if (homePage && ogCreateHasDraft || categoryPage && ogCreateHasDraft || tagPage && ogCreateHasDraft) {
             const newCreateButton = document.querySelector('#new-create-topic');
