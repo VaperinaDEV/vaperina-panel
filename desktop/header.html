@@ -25,12 +25,9 @@ if (getVaperinaPanel()) {
     stickyHeaderCheck() {
       const anchor = document.querySelector(".create-topic-visibility");
       const body = document.querySelector("body");
-      const homePage = document.querySelector('.navigation-topics');
-      const categoryPage = document.querySelector('.category-header');
-      const tagPage = document.querySelector('.tags-page');
 
       new IntersectionObserver(entries => {
-        if (!entries[0].isIntersecting && homePage || !entries[0].isIntersecting && categoryPage || !entries[0].isIntersecting && tagPage) {
+        if (!entries[0].isIntersecting) {
           body.classList.add(stickyClass);
         } else {
           body.classList.remove(stickyClass);
