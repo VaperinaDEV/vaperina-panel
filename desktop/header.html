@@ -1,3 +1,5 @@
+<div class="create-topic-visibility"></div>
+
 <script type="text/discourse-plugin" version="0.8">
 
 function getVaperinaPanel() {
@@ -22,7 +24,7 @@ if (getVaperinaPanel()) {
     @on("didInsertElement")
     stickyHeaderCheck() {
       const anchor = document.querySelector(".create-topic-visibility");
-      const body = document.querySelector("body");
+      const body = document.querySelector("body.vp");
 
       new IntersectionObserver(entries => {
         if (!entries[0].isIntersecting) {
@@ -34,8 +36,4 @@ if (getVaperinaPanel()) {
     }
   });
 }
-</script>
-
-<script type='text/x-handlebars' data-template-name='/connectors/before-topic-list/create-topic-visibility'>
-  <div class="create-topic-visibility"></div>
 </script>
