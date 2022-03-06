@@ -4,6 +4,7 @@ body.vp {
       #create-topic,
       .after-create-topic-button-outlet.new-topic-dropdown {
         display: flex;
+        opacity: 1;
       }
     }
   }
