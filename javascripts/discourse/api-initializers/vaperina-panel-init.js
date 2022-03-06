@@ -77,7 +77,7 @@ export default {
           }
         });
 
-        api.onPageChange((url, title) => {
+        api.onPageChange(() => {
           const body = document.querySelector('body');
           const homePage = document.querySelector('.navigation-topics');
           const categoryPage = document.querySelector('.category-header');
@@ -85,9 +85,7 @@ export default {
           const ogCreateHasDraft = document.querySelector('#create-topic.open-draft');
           
           if (homePage || categoryPage || tagPage) {
-            this.appEvents.on("page:changed", () => {
-              body.classList.add('vp');
-            });
+            body.classList.add('vp');
           }
 
           if (homePage && ogCreateHasDraft || categoryPage && ogCreateHasDraft || tagPage && ogCreateHasDraft) {
