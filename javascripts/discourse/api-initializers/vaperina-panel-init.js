@@ -98,7 +98,7 @@ export default {
             newCreateButtonLabel.innerHTML = "Vázlat folytatása...";
           }
           
-          const createTopicDisabled = document.querySelector('#create-topic').hasAttribute("disabled");
+          const createTopicDisabled = document.querySelector('#create-topic[disabled]');
           const newCreateButton = document.querySelector('#new-create-topic');
           
           if (categoryPage && !topicPage && createTopicDisabled || tagPage && !topicPage && createTopicDisabled) {
