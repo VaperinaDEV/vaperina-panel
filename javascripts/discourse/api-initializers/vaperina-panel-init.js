@@ -85,7 +85,7 @@ export default {
           const ogCreateHasDraft = document.querySelector('#create-topic.open-draft');
           
           if (homePage || categoryPage || tagPage) {
-            window.addEventListener("beforeunload", (event) => {
+            window.addEventListener("unload", (event) => {
               body.classList.add('vp');
             });
           }
