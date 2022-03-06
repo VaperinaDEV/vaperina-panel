@@ -34,6 +34,14 @@ if (getVaperinaPanel()) {
     }
   });
 }
+
+if (!getVaperinaPanel()) {
+  api.registerConnectorClass("discovery-list-container-top", "create-topic-visibility", {
+    shouldRender() {
+      return false;
+    }
+  });
+}
 </script>
 
 <script type='text/x-handlebars' data-template-name='/connectors/before-topic-list/create-topic-visibility'>
