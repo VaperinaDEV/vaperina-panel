@@ -102,9 +102,10 @@ export default {
             newCreateButtonLabel.innerHTML = "Vázlat folytatása...";
           }
 
-          const ogCreateDisable = document.querySelector('#create-topic');
+          const categoryTopicDisable = document.querySelector('.category-header #create-topic[disabled]');
+          const tagTopicDisable = document.querySelector('.tags-page #create-topic[disabled]');
 
-          if (categoryPage && ogCreateDisable.hasAttribute("disabled") || tagPage && ogCreateDisable.hasAttribute("disabled")) {
+          if (categoryTopicDisable || tagTopicDisable) {
             const newCreateButton = document.querySelector('#new-create-topic');
             newCreateButton.disabled = true;
           } else {
