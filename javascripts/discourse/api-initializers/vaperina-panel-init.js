@@ -99,12 +99,15 @@ export default {
           }
           
           const createTopicDisabled = document.querySelector('#create-topic[disabled]');
+          const createTopicEnabled = document.querySelector('#create-topic');
           const newCreateButton = document.querySelector('#new-create-topic');
           
           if (categoryPage && createTopicDisabled || tagPage && createTopicDisabled) {
             newCreateButton.disabled = true;
           } else {
-            newCreateButton.disabled = false;
+            if (categoryPage && createTopicEnabled || tagPage && createTopicEnabled) {
+              newCreateButton.disabled = false;
+            }
           }
         });
 
