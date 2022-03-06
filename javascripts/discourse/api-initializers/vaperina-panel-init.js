@@ -50,6 +50,9 @@ export default {
       if (getVaperinaPanel()) {
         
         if (api.getCurrentUser() === null) return false;
+        
+        const body = document.querySelector('body');
+        body.classList.add('vp');
 
         api.onAppEvent("composer:closed", () => {
           const homePage = document.querySelector('.navigation-topics');
@@ -84,10 +87,6 @@ export default {
           const tagPage = document.querySelector('.tags-page');
           const ogCreateNoDraft = document.querySelector('#create-topic');
           const ogCreateHasDraft = document.querySelector('#create-topic.open-draft');
-          
-          if (homePage || categoryPage || tagPage) {
-            body.classList.add('vp');
-          }
 
           if (homePage && ogCreateHasDraft || categoryPage && ogCreateHasDraft || tagPage && ogCreateHasDraft) {
             const newCreateButton = document.querySelector('#new-create-topic');
