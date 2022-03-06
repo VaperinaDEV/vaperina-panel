@@ -83,7 +83,6 @@ export default {
 
         api.onPageChange(() => {
           const bodySticky = document.querySelector('body.sticky-create-topic');
-          const mobileView = this.site.mobileView;
           const homePage = document.querySelector('navigation-topics');
           const categoryPage = document.querySelector('body[class*="category-"]:not(.archetype-regular):not(.archetype-banner)');
           const tagPage = document.querySelector('tags-page');
