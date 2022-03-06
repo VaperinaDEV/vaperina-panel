@@ -11,11 +11,7 @@ function getVaperinaPanel() {
   return result;
 }
 
-const homePage = document.querySelector('.navigation-topics');
-const categoryPage = document.querySelector('.category-header');
-const tagPage = document.querySelector('.tags-page');
-
-if (getVaperinaPanel() && homePage || getVaperinaPanel() && categoryPage || getVaperinaPanel() && tagPage) {
+if (getVaperinaPanel()) {
   
   if (!"IntersectionObserver" in window) return;
 
