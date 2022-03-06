@@ -25,12 +25,22 @@ if (getVaperinaPanel()) {
     stickyHeaderCheck() {
       const anchor = document.querySelector(".create-topic-visibility");
       const body = document.querySelector("body");
+      const mobileView = this.site.mobileView;
+      const ogCreateButton = document.querySelector('#create-topic');      
+      const ogNewTopicDrop = document.querySelector('.new-topic-dropdown');
 
       new IntersectionObserver(entries => {
         if (!entries[0].isIntersecting) {
           body.classList.add(stickyClass);
         } else {
           body.classList.remove(stickyClass);
+        }
+        if (body.classList.contains(!stickyClass)) {
+          ogCreateButton.classList.add('hidden');
+          ogNewTopicDrop.classList.add('hidden');
+        } else {
+          ogCreateButton.classList.remove('hidden');
+          ogNewTopicDrop.classList.remove('hidden');
         }
       }).observe(anchor);
     }
