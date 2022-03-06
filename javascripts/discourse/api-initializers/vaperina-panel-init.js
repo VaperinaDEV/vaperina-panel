@@ -92,7 +92,7 @@ export default {
             bodySticky.classList.remove('sticky-create-topic');
           } else {
             if (homePage && bodySticky || categoryPage && bodySticky || tagPage && bodySticky) {
-              bodySticky.classList.add('sticky-create-topic');
+              categoryPage.classList.add('sticky-create-topic');
             }
           }
           
