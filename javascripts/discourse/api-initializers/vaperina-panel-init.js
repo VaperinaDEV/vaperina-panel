@@ -86,8 +86,9 @@ export default {
           const tagPage = document.querySelector('.tags-page');
           const ogCreateHasDraft = document.querySelector('#create-topic.open-draft');    
           const body = document.querySelector('body');
+          const bodySticky = body.classList.contains('sticky-create-topic');
           
-          if (!homePage && body.classList.contains('sticky-create-topic')) {
+          if (!homePage && bodySticky || !categoryPage && bodySticky || !tagPage && bodySticky) {
             body.classList.remove('sticky-create-topic');
           }
           
