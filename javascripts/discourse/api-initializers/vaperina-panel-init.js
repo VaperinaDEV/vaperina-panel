@@ -97,7 +97,7 @@ export default {
           
           const createTopicDisabled = document.querySelector('button#create-topic[disabled]');
           const newCreateButton = document.querySelector('#new-create-topic');
-          if (createTopicDisabled) {
+          if (categoryPage && createTopicDisabled || tagPage && createTopicDisabled) {
             newCreateButton.classList.add('itsdisabled');
           } else {
             newCreateButton.classList.remove('itsdisabled');
