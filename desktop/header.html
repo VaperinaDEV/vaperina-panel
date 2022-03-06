@@ -21,7 +21,7 @@ if (getVaperinaPanel()) {
     pluginId: "sticky-create-topic",
     @on("didInsertElement")
     stickyHeaderCheck() {
-      const anchor = document.querySelector(".topic-list");
+      const anchor = document.querySelector(".discovery-list-container-top-outlet");
       const body = document.querySelector("body");
 
       new IntersectionObserver(entries => {
