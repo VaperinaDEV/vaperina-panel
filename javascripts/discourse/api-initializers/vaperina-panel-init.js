@@ -84,7 +84,14 @@ export default {
           const homePage = document.querySelector('.navigation-topics');
           const categoryPage = document.querySelector('.category-header');
           const tagPage = document.querySelector('.tags-page');
-          const ogCreateHasDraft = document.querySelector('#create-topic.open-draft');
+          const ogCreateHasDraft = document.querySelector('#create-topic.open-draft');    
+          const body = document.querySelector('body');
+          
+          if (homePage || categoryPage || tagPage) {
+            body.classList.add('vp');
+          } else {
+            body.classList.remove('vp');
+          }
           
           if (homePage && ogCreateHasDraft || categoryPage && ogCreateHasDraft || tagPage && ogCreateHasDraft) {
             const newCreateButton = document.querySelector('#new-create-topic');
