@@ -237,6 +237,10 @@ body.vp #create-topic {
   }
 }
 
+body.vp .new-topic-dropdown {
+  margin-top: -40px;
+}
+
 body.vp {
   #main-outlet {
     #create-topic,
