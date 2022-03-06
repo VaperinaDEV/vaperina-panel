@@ -171,9 +171,8 @@
 body.vp {
   #main-outlet {
     #create-topic,
-    .after-create-topic-button-outlet.new-topic-dropdown {
+    .new-topic-dropdown {
       display: none;
-      opacity: 0;
     }
   }
 }
