@@ -33,7 +33,7 @@ if (getVaperinaPanel()) {
         if (!entries[0].isIntersecting && homePage || !entries[0].isIntersecting && categoryPage || !entries[0].isIntersecting && tagPage) {
           body.classList.add(stickyClass);
         } else {
-          if (!entries[0].isIntersecting && !homePage || !entries[0].isIntersecting && !categoryPage || !entries[0].isIntersecting && !tagPage) {
+          if (entries[0].isIntersecting && !homePage || entries[0].isIntersecting && !categoryPage || entries[0].isIntersecting && !tagPage) {
             body.classList.remove(stickyClass);
           }
         }
