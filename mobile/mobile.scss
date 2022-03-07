@@ -4,10 +4,15 @@
     .categories-list,
     .tags-page,
     &[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
-      .list-controls .notifications-button {
-        position: absolute;
-        right: 1em;
-        margin-top: -3.05em;
+      .list-controls {
+        .navigation-container .navigation-controls {
+          padding: 0;
+        }
+        .notifications-button {
+          position: absolute;
+          right: 1em;
+          margin-top: -3.05em;
+        }
       }
     }
   }
