@@ -44,12 +44,16 @@
       .value {
         color: var(--primary);
         font-weight: 600;
+        vertical-align: middle;
       }
       .label {
         color: var(--primary-high);
+        vertical-align: middle;
+        svg {
+          font-size: 0.9em;
+        }
         .d-icon-heart {
           color: var(--love);
-          font-size: 0.9em;
         }
         .d-icon-clock {
           color: var(--primary);
