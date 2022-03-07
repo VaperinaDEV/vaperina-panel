@@ -27,9 +27,9 @@
             </a>
           {{/each}}
           <a href="/u/{{user}}/badges">
-            <span class="user-badge">
-              <span class="count">további +{{moreBadges}}</span>
-            </span>
+            {{#badge-button badge=b class=(concat "more-user-badges")}}
+              <span class="count">további +({{moreBadges}}-{{stinkinBadges}})</span>
+            {{/badge-button}}
           </a>
         </div>
       {{/if}}
