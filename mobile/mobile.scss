@@ -1,12 +1,14 @@
 @media screen and (max-width: 1100px) {
   body.vp {
-    .navigation-topics .list-controls .notifications-button,
-    .categories-list .list-controls .notifications-button,
-    .tags-page .list-controls .notifications-button,
-    body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) .list-controls .notifications-button {
-      position: absolute;
-      right: 1em;
-      margin-top: -3.05em;
+    .navigation-topics,
+    .categories-list,
+    .tags-page,
+    &[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
+      .list-controls .notifications-button {
+        position: absolute;
+        right: 1em;
+        margin-top: -3.05em;
+      }
     }
   }
 }
