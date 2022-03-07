@@ -101,7 +101,7 @@
   right: 0.25em;
   .vp-link {
     display: flex;
-    font-size: var(--font-up-1);
+    align-items: center;
     color: var(--primary-high);
     padding: 0.5em;
     border-radius: $br-px;
@@ -109,6 +109,9 @@
     &:focus {
       background: var(--primary-high);
       color: var(--secondary);
+    }
+    svg {
+      font-size: var(--font-up-1);
     }
   }
 }
