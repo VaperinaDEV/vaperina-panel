@@ -4,6 +4,9 @@
     .categories-list,
     .tags-page,
     &[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
+      #navigation-bar {
+        padding-bottom: 0.25em;
+      }
       .list-controls {
         .navigation-container .navigation-controls {
           padding: 0;
