@@ -16,18 +16,14 @@
             {{user-stat value=userLikesGiven icon="heart" label="user.summary.likes_given"}}
           </a>
         {{/if}}
-        {{user-stat value=userDayVisited icon="clock" label="user.summary.days_visited"}}
+        <a href="/my/activity/solved">
+          {{user-stat value=userSolvedCount icon="check-square" label="solved.solution_summary.other"}}
+        </a>
         <a href="/my/activity/topics">
           {{user-stat value=userTopicCount label="user.summary.topic_count"}}
         </a>
         <a href="/my/activity/replies">
           {{user-stat value=userPostCount label="user.summary.post_count"}}
-        </a>
-        <a href="/my/activity/bookmarks">
-          {{user-stat value=userBookmarkCount icon="bookmark" label="user.summary.bookmark_count"}}
-        </a>
-        <a href="/my/activity/solved">
-          {{user-stat value=userSolvedCount icon="check-square" label="solved.solution_summary.other"}}
         </a>
       </div>
       {{#if stinkinBadges}}
@@ -53,7 +49,7 @@
       {{#if user}}
         <a class="vp-link" href="/my/summary">{{d-icon "user"}}</a>
         <a class="vp-link" href="/my/preferences/account">{{d-icon "cog"}}</a>
-        <a class="vp-link" href="/my/activity/bookmarks">{{d-icon "bookmark"}}({{userBookmarkCount}})</a>
+        <a class="vp-link" href="/my/activity/bookmarks">{{d-icon "bookmark"}}{{userBookmarkCount}}</a>
         <a class="vp-link" href="/my/messages">{{d-icon "envelope"}}</a>
         <a class="vp-link" href="/my/notifications">{{d-icon "bell"}}</a>
       {{/if}}
