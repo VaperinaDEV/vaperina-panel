@@ -127,7 +127,7 @@ export default {
             ajax("/u/" + username + "/card.json").then (function(result) {
               const userCardBg = result.user.card_background_upload_url;
               const stinkinBadges = [];
-              const moreBadges = result.user.badge_count - 3;
+              const moreBadges = result.user.badge_count - result.user.listable;
 
               if (result.badges) {
                 result.badges.forEach(function(badges){
