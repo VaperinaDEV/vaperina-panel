@@ -42,6 +42,7 @@
       display: inline-block;
       margin: 0.5em;
       .value {
+        color: var(--primary);
         font-weight: 600;
       }
       .label {
@@ -50,6 +51,15 @@
           color: var(--love);
           font-size: 0.9em;
         }
+        .d-icon-clock {
+          color: var(--primary);
+        }
+        .d-icon-bookmark {
+          color: var(--primary);
+        }
+        .d-icon-check-square {
+          color: var(--success);
+        } 
       }
     }
   }
