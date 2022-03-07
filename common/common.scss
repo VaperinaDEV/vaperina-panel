@@ -48,6 +48,9 @@
     }
   }
   .badges {
+    display: flex;
+    align-items: center;
+    gap: 0.25em;
     .user-badge {
       border-radius: $br-px;
     }
