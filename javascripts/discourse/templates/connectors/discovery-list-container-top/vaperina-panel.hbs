@@ -15,6 +15,10 @@
           {{user-stat value=userLikesGiven icon="heart" label="user.summary.likes_given"}}
         </div>
       {{/if}}
+      <div class="stats">
+        {{user-stat value=userDayVisited icon="clock" label="user.summary.days_visited"}}
+        {{user-stat value=userTopicsEntered label="user.summary.topics_entered"}}
+      </div>
       {{#if stinkinBadges}}
         <div class="badges">
           {{#each stinkinBadges as |b|}}
