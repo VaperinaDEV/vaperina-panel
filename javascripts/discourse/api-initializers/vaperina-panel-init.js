@@ -127,6 +127,7 @@ export default {
             ajax("/u/" + username + "/card.json").then (function(result) {
               const userCardBg = result.user.card_background_upload_url;
               const stinkinBadges = [];
+              const moreBadges = result.user.badge_count;
 
               if (result.badges) {
                 result.badges.forEach(function(badges){
@@ -135,6 +136,7 @@ export default {
               }
               component.set("userCardBg", `${getURLWithCDN(userCardBg)}`);
               component.set("stinkinBadges", stinkinBadges);
+              component.set("moreBadges", moreBadges);
             });
           }
         });
