@@ -50,6 +50,7 @@
   .badges {
     display: flex;
     align-items: center;
+    flex-flow: row wrap;
     gap: 0.25em;
     .user-badge {
       border-radius: $br-px;
