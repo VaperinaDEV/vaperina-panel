@@ -9,15 +9,26 @@
       </div>
     </div>
     <div class="vp-panel-contents-stats">
-      {{#if userLikesGiven}}
-        <div class="likes">
+      <div class="likes">
+        {{#if userLikesGiven}}
           {{user-stat value=userLikesReceived icon="heart" label="user.summary.likes_received"}}
-          {{user-stat value=userLikesGiven icon="heart" label="user.summary.likes_given"}}
-        </div>
-      {{/if}}
-      <div class="stats">
+          <a href"/my/activity/likes-given">
+            {{user-stat value=userLikesGiven icon="heart" label="user.summary.likes_given"}}
+          </a>
+        {{/if}}
         {{user-stat value=userDayVisited icon="clock" label="user.summary.days_visited"}}
-        {{user-stat value=userTopicsEntered label="user.summary.topics_entered"}}
+        <a href"/my/activity/topics">
+          {{user-stat value=userTopicCount icon="clock" label="user.summary.topic_count"}}
+        </a>
+        <a href"/my/activity/replies">
+          {{user-stat value=userPostCount label="user.summary.post_count"}}
+        </a>
+        <a href"/my/bookmarks">
+          {{user-stat value=userBookmarkCount icon="bookmark" label="user.summary.bookmark_count"}}
+        </a>
+        <a href"/my/activity/solved">
+          {{user-stat value=userSolvedCount icon="check-square" label="user.summary.solved_count"}}
+        </a>
       </div>
       {{#if stinkinBadges}}
         <div class="badges">
