@@ -53,8 +53,7 @@ export default {
         const body = document.querySelector('body');
         body.classList.add('vp');
 
-        composerAce() {
-        this.appEvents.on("page:changed");
+        api.onAppEvent("composer:closed", () => {
           const body = document.querySelector('body');
           const homePage = document.querySelector('.navigation-topics');
           const categoryPage = document.querySelector('body[class*="category-"]:not(.archetype-regular):not(.archetype-banner)');
@@ -79,7 +78,7 @@ export default {
               newCreateButtonLabel.innerHTML = "Írj egy új témát...";
             }
           }
-        },
+        });
 
         api.onPageChange(() => {
           const homePage = document.querySelector('.navigation-topics');
