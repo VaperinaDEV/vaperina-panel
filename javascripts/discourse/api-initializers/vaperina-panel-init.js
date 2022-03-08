@@ -95,13 +95,13 @@ export default {
             newCreateButtonLabel.innerHTML = "Vázlat folytatása...";
           }
           
-          const createTopicButton = document.querySelector('#create-topic');
+          const createTopicButton = document.querySelector('#create-topic').hasAttribute('disabled');
           const newCreateButton = document.querySelector('#new-create-topic');
           
-          if (categoryPage && createTopicButton.hasAttribute('disabled') || tagPage && createTopicButton.hasAttribute('disabled')) {
+          if (categoryPage && createTopicButton || tagPage && createTopicButton) {
             newCreateButton.disabled = true;
           } else {
-            if (categoryPage && createTopicButton || tagPage && createTopicButton) {
+            if (categoryPage && !createTopicButton || tagPage && !createTopicButton) {
               newCreateButton.disabled = false;
             }
           }
