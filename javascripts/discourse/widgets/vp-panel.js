@@ -17,7 +17,7 @@ function getUser() {
 }
 
 createWidget('vp-avatar', {
-  tagName: 'div.vp-avatar',
+  tagName: '',
 
   userAvatarUrl() {
     let rawSize = getRawSize;
