@@ -53,7 +53,6 @@ export default {
         const body = document.querySelector('body');
         body.classList.add('vp');
         
-        const body = document.querySelector('body');
         const homePage = document.querySelector('.navigation-topics');
         const categoryPage = document.querySelector('body[class*="category-"]:not(.archetype-regular):not(.archetype-banner)');
         const tagPage = document.querySelector('.tags-page');
