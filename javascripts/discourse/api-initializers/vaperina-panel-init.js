@@ -54,8 +54,8 @@ export default {
         body.classList.add('vp');
         
 
-
-        api.onAppEvent("composer:closed", () => {
+       activate() {
+         this.appEvents.on("draft:destroyed", () => {
           const homePage = document.querySelector('.navigation-topics');
           const categoryPage = document.querySelector('body[class*="category-"]:not(.archetype-regular):not(.archetype-banner)');
           const tagPage = document.querySelector('.tags-page');
@@ -70,7 +70,8 @@ export default {
             vpNewTopic.classList.add('open-draft');
             newCreateButtonLabel.innerHTML = "Vázlat folytatása...";
           }
-        });
+         });
+        };
         api.onAppEvent("draft:destroyed", () => {
           const homePage = document.querySelector('.navigation-topics');
           const categoryPage = document.querySelector('body[class*="category-"]:not(.archetype-regular):not(.archetype-banner)');
