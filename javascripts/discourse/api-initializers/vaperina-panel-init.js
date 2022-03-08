@@ -79,7 +79,7 @@ export default {
               newCreateButtonLabel.innerHTML = "Írj egy új témát...";
             }
           }
-        };
+        },
 
         api.onPageChange(() => {
           const homePage = document.querySelector('.navigation-topics');
