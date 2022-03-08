@@ -142,7 +142,13 @@ export default {
               const allBadges = result.user.badge_count;
               const followersCount = result.user.total_followers;
               const followingCount = result.user.total_following;
-
+                
+              if (result.badges) {
+                result.badges.forEach(function(badges){
+                  stinkinBadges.push(badges);
+                });
+              }
+              
               component.set("userCardBg", `${getURLWithCDN(userCardBg)}`);
               component.set("stinkinBadges", stinkinBadges);
               component.set("allBadges", allBadges);
