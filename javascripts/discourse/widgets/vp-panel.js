@@ -74,7 +74,6 @@ createWidget('vp-topic', {
         action: composerModal.CREATE_TOPIC,
         categoryId: categoryd,
         draftKey: controller.get("model.draft_key") || Composer.NEW_TOPIC_KEY,
-        draftSequence: controller.get("model.draft_sequence") || 0,
       });
     };
 
