@@ -113,9 +113,7 @@ export default {
           setupComponent(args, component) {
             let username = component.get("currentUser.username");
 
-            fetch("/u/" + username + "/summary.json")
-            .then(response => response.json())
-            .then (result => {
+            ajax("/u/" + username + "/summary.json").then (function(result) {
               const userLikesReceived = result.user_summary.likes_received;
               const userLikesGiven = result.user_summary.likes_given;        
               const userDayVisited = result.user_summary.days_visited;
@@ -138,9 +136,7 @@ export default {
               component.set("user", api.getCurrentUser().username);         
             });
 
-            fetch("/u/" + username + "/card.json")
-            .then(response => response.json())
-            .then (result => {
+            ajax("/u/" + username + "/card.json").then (function(result) {
               const userCardBg = result.user.card_background_upload_url;
               const stinkinBadges = [];
               const allBadges = result.user.badge_count;
