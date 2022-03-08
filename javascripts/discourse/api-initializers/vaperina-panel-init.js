@@ -137,7 +137,7 @@ export default {
             });
 
             ajax("/u/" + username + "/card.json").then (function(result) {
-              const userCardBg = result.card_background_upload_url;
+              const userCardBg = result.user_card.card_background_upload_url;
               const stinkinBadges = [];
               const allBadges = result.user.badge_count;
               const followersCount = result.user.total_followers;
