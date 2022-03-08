@@ -68,7 +68,7 @@ createWidget('vp-topic', {
           .get("context.category.id"),
         categoryd = topicCategory ? topicCategory : category;
 
-      Composer.open({
+      this.controllerFor("composer").open({
         action: Composer.CREATE_TOPIC,
         categoryId: categoryd,
         draftKey: controller.get("model.draft_key") || Composer.NEW_TOPIC_KEY,
