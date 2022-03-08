@@ -67,8 +67,9 @@ createWidget('vp-topic', {
           .lookup("route:topic")
           .get("context.category.id"),
         categoryd = topicCategory ? topicCategory : category;
+      const composerController = container.lookup("controller:composer");
 
-      this.controllerFor("composer").open({
+      composerController.open({
         action: Composer.CREATE_TOPIC,
         categoryId: categoryd,
         draftKey: controller.get("model.draft_key") || Composer.NEW_TOPIC_KEY,
