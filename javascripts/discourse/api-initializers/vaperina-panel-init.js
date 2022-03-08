@@ -113,31 +113,24 @@ export default {
           setupComponent(args, component) {
             let username = component.get("currentUser.username");
 
-            ajax("/u/" + username + "/summary.json").then (function(result) {
-
+            fetch("/u/" + username + "/summary.json")
+            .then(response => response.json())
+            .then (result => {
               const userLikesReceived = result.user_summary.likes_received;
-              const userLikesGiven = result.user_summary.likes_given;
-              
+              const userLikesGiven = result.user_summary.likes_given;        
               const userDayVisited = result.user_summary.days_visited;
-              const userTopicsEntered = result.user_summary.topics_entered;
-              const userPostsReadCount = result.user_summary.posts_read_count;
               const userTopicCount = result.user_summary.topic_count;
               const userPostCount = result.user_summary.post_count;
               const userTimeRead = result.user_summary.time_read;
-              const userRecentTimeRead = result.user_summary.recent_time_read;
               const userBookmarkCount = result.user_summary.bookmark_count;
               const userSolvedCount = result.user_summary.solved_count;
 
               component.set("userLikesReceived", userLikesReceived);
               component.set("userLikesGiven", userLikesGiven);
-              
               component.set("userDayVisited", userDayVisited);
-              component.set("userTopicsEntered", userTopicsEntered);
-              component.set("userPostsReadCount", userPostsReadCount);
               component.set("userTopicCount", userTopicCount);
               component.set("userPostCount", userPostCount);
               component.set("userTimeRead", userTimeRead);
-              component.set("userRecentTimeRead", userRecentTimeRead);
               component.set("userBookmarkCount", userBookmarkCount);
               component.set("userSolvedCount", userSolvedCount);
               
@@ -145,7 +138,9 @@ export default {
               component.set("user", api.getCurrentUser().username);         
             });
 
-            ajax("/u/" + username + "/card.json").then (function(result) {
+            fetch("/u/" + username + "/card.json")
+            .then(response => response.json())
+            .then (result => {
               const userCardBg = result.user.card_background_upload_url;
               const stinkinBadges = [];
               const allBadges = result.user.badge_count;
