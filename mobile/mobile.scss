@@ -25,12 +25,7 @@
   .vp-panel-contents-stats {
     overflow-x: auto;
     white-space: nowrap;
-    .stats {
-      display: flex;
-      justify-content: space-between;
-    }
     .badges {
-      justify-content: space-between;
       flex-flow: row nowrap;
     }
   }
