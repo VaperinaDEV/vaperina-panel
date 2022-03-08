@@ -140,15 +140,15 @@ export default {
 
             fetch("/u/" + username + "/card.json")
             .then(response => response.json())
-            .then (resultcard => {
-              const userCardBg = resultcard.user.card_background_upload_url;
+            .then (data => {
+              const userCardBg = data.user.card_background_upload_url;
               const stinkinBadges = [];
-              const allBadges = resultcard.user.badge_count;
-              const followersCount = resultcard.user.total_followers;
-              const followingCount = resultcard.user.total_following;
+              const allBadges = data.user.badge_count;
+              const followersCount = data.user.total_followers;
+              const followingCount = data.user.total_following;
 
-              if (resultcard.badges) {
-                resultcard.badges.forEach(function(badges){
+              if (data.badges) {
+                data.badges.forEach(function(badges){
                   stinkinBadges.push(badges);
                 });
               }
