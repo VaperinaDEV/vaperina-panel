@@ -141,11 +141,11 @@ export default {
             fetch("/u/" + username + "/card.json")
             .then(response => response.json())
             .then (result => {
-              const userCardBg = result.user_card.card_background_upload_url;
+              const userCardBg = result.card_background_upload_url;
               const stinkinBadges = [];
-              const allBadges = result.user_card.badge_count;
-              const followersCount = result.user_card.total_followers;
-              const followingCount = result.user_card.total_following;
+              const allBadges = result.badge_count;
+              const followersCount = result.total_followers;
+              const followingCount = result.total_following;
 
               if (result.badges) {
                 result.badges.forEach(function(badges){
