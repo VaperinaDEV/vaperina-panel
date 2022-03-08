@@ -23,19 +23,57 @@
       <div class="vp-panel-contents-stats">
         <div class="stats">
           {{#if userLikesGiven}}
-            {{user-stat value=userLikesReceived icon="heart" label="user.summary.likes_received"}}
+            <div class="user-stat">
+              <span class="value">
+                <span class="number">{{userLikesReceived}}</span>
+              </span>
+              <span class="label">
+                {{d-icon "heart"}}
+                kapott
+              </span>
+            </div>
             <a href="/u/{{user}}/activity/likes-given">
-              {{user-stat value=userLikesGiven icon="heart" label="user.summary.likes_given"}}
+              <div class="user-stat">
+                <span class="value">
+                  <span class="number">{{userLikesGiven}}</span>
+                </span>
+                <span class="label">
+                  {{d-icon "heart"}}
+                  adott
+                </span>
+              </div>
             </a>
           {{/if}}
           <a href="/u/{{user}}/activity/solved">
-            {{user-stat value=userSolvedCount icon="check-square" label="solved.solution_summary.other"}}
+            <div class="user-stat">
+              <span class="value">
+                <span class="number">{{userSolvedCount}}</span>
+              </span>
+              <span class="label">
+                {{d-icon "heart"}}
+                megoldás
+              </span>
+            </div>
           </a>
           <a href="/u/{{user}}/activity/topics">
-            {{user-stat value=userTopicCount label="user.summary.topic_count"}}
+            <div class="user-stat">
+              <span class="value">
+                <span class="number">{{userTopicCount}}</span>
+              </span>
+              <span class="label">
+                téma
+              </span>
+            </div>
           </a>
           <a href="/u/{{user}}/activity/replies">
-            {{user-stat value=userPostCount label="user.summary.post_count"}}
+            <div class="user-stat">
+              <span class="value">
+                <span class="number">{{userPostCount}}</span>
+              </span>
+              <span class="label">
+                bejegyzés
+              </span>
+            </div>
           </a>
         </div>
         {{#if stinkinBadges}}
