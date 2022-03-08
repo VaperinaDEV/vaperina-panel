@@ -11,19 +11,19 @@
     <div class="vp-panel-contents-stats">
       <div class="stats">
         {{#if userLikesGiven}}
-          {{user-stat value=userLikesReceived icon="heart" label="kapott"}}
+          {{user-stat value=userLikesReceived icon="heart" label="user.summary.likes_received"}}
           <a href="/my/activity/likes-given">
-            {{user-stat value=userLikesGiven icon="heart" label="adott"}}
+            {{user-stat value=userLikesGiven icon="heart" label="user.summary.likes_given"}}
           </a>
         {{/if}}
         <a href="/my/activity/solved">
-          {{user-stat value=userSolvedCount icon="check-square" label="megoldás"}}
+          {{user-stat value=userSolvedCount icon="check-square" label="solved.solution_summary.other"}}
         </a>
         <a href="/my/activity/topics">
-          {{user-stat value=userTopicCount label="téma"}}
+          {{user-stat value=userTopicCount label="user.summary.topic_count"}}
         </a>
         <a href="/my/activity/replies">
-          {{user-stat value=userPostCount label="bejegyzés"}}
+          {{user-stat value=userPostCount label="user.summary.post_count"}}
         </a>
       </div>
       {{#if stinkinBadges}}
