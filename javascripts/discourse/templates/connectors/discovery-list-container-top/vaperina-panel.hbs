@@ -4,15 +4,6 @@
     <div class="vp-panel-contents-top">
       {{mount-widget widget="vp-avatar"}}
       <div class="vp-new-topic">
-        {{#if canCreateTopic}}
-          {{d-button
-            class=btnClass
-            id="create-topic"
-            action=action
-            icon="plus"
-            disabled=disabled
-            label=label}}
-        {{/if}}
         {{mount-widget widget="vp-topic"}}  
         {{new-topic-dropdown-panel category=category}}
       </div>
