@@ -113,7 +113,7 @@ export default {
           setupComponent(args, component) {
             let username = component.get("currentUser.username");
 
-            fetch(`"/u/" + username + "/summary.json"`)
+            fetch("/u/" + username + "/summary.json")
             .then(response => response.json())
             .then (result => {
               const userLikesReceived = result.user_summary.likes_received;
@@ -138,25 +138,25 @@ export default {
               component.set("user", api.getCurrentUser().username);         
             });
 
-            fetch(`"/u/" + username + "/card.json"`)
+            fetch("/u/" + username + "/card.json")
             .then(response => response.json())
-            .then (result => {
-              const userCardBg = result.user.card_background_upload_url;
+            .then (data => {
+              const userCardBg = data.card_background_upload_url;
               const stinkinBadges = [];
-              const allBadges = result.user.badge_count;
-              const followersCount = result.user.total_followers;
-              const followingCount = result.user.total_following;
+              const allBadges = data.badge_count;
+              const followersCount = data.total_followers;
+              const followingCount = data.total_following;
 
-              if (result.badges) {
-                result.badges.forEach(function(badges){
+              if (data.badges) {
+                data.badges.forEach(function(badges){
                   stinkinBadges.push(badges);
                 });
               }
-              component.set("userCardBg", `${getURLWithCDN(userCardBg)}`);
-              component.set("stinkinBadges", stinkinBadges);
-              component.set("allBadges", allBadges);
-              component.set("followersCount", followersCount);
-              component.set("followingCount", followingCount);
+              component.set("userCardBgA", `${getURLWithCDN(userCardBg)}`);
+              component.set("stinkinBadgesA", stinkinBadges);
+              component.set("allBadgesA", allBadges);
+              component.set("followersCountA", followersCount);
+              component.set("followingCountA", followingCount);
             });
           }
         });
