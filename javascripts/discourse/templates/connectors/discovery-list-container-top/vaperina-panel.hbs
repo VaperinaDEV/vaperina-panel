@@ -2,22 +2,15 @@
 <div class="vp-panel-top" style="background-image: url('{{userCardBg}}');">
   <div class="vp-panel-contents">
     {{#if this.loading}}
-      <div class="card-row first-row">
-        <div class="user-card-avatar">
-          <div class="card-avatar-placeholder animated-placeholder placeholder-animation"></div>
+      <div class='row'>
+        <div class='topic-avatar'>
+          <div class='placeholder-avatar placeholder-animation'></div>
         </div>
-      </div>
-      <div class="card-row second-row">
-        <div class="animated-placeholder placeholder-animation"></div>
-      </div>
-      <div class="card-row">
-        <div class="animated-placeholder placeholder-animation"></div>
-      </div>
-      <div class="card-row">
-        <div class="animated-placeholder placeholder-animation"></div>
-      </div>
-      <div class="card-row">
-        <div class="animated-placeholder placeholder-animation"></div>
+        <div class='topic-body'>
+          <div class='placeholder-text placeholder-animation'></div>
+          <div class='placeholder-text placeholder-animation'></div>
+          <div class='placeholder-text placeholder-animation'></div>
+        </div>
       </div>
     {{else}}
       <div class="vp-panel-contents-top">
