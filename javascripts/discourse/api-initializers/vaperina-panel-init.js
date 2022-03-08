@@ -53,13 +53,15 @@ export default {
         const body = document.querySelector('body');
         body.classList.add('vp');
         
-        const homePage = document.querySelector('.navigation-topics');
-        const categoryPage = document.querySelector('body[class*="category-"]:not(.archetype-regular):not(.archetype-banner)');
-        const tagPage = document.querySelector('.tags-page');
-        const ogCreateHasDraft = document.querySelector('#create-topic.open-draft');
-        const ogCreateNoDraft = document.querySelector('#create-topic');
+
 
         api.onAppEvent("composer:closed", () => {
+          const homePage = document.querySelector('.navigation-topics');
+          const categoryPage = document.querySelector('body[class*="category-"]:not(.archetype-regular):not(.archetype-banner)');
+          const tagPage = document.querySelector('.tags-page');
+          const ogCreateHasDraft = document.querySelector('#create-topic.open-draft');
+          const ogCreateNoDraft = document.querySelector('#create-topic');
+          
           if (homePage && ogCreateHasDraft || categoryPage && ogCreateHasDraft || tagPage && ogCreateHasDraft) {
             const newCreateButton = document.querySelector('#new-create-topic');
             const vpNewTopic = document.querySelector('.vp-new-topic');
@@ -70,6 +72,12 @@ export default {
           }
         });
         api.onAppEvent("draft:destroyed", () => {
+          const homePage = document.querySelector('.navigation-topics');
+          const categoryPage = document.querySelector('body[class*="category-"]:not(.archetype-regular):not(.archetype-banner)');
+          const tagPage = document.querySelector('.tags-page');
+          const ogCreateHasDraft = document.querySelector('#create-topic.open-draft');
+          const ogCreateNoDraft = document.querySelector('#create-topic');
+          
           if (homePage && ogCreateNoDraft || categoryPage && ogCreateNoDraft || tagPage && ogCreateNoDraft) {
             const newCreateButton = document.querySelector('#new-create-topic');
             const vpNewTopic = document.querySelector('.vp-new-topic');
@@ -81,6 +89,12 @@ export default {
         });
 
         api.onPageChange(() => {
+          const homePage = document.querySelector('.navigation-topics');
+          const categoryPage = document.querySelector('body[class*="category-"]:not(.archetype-regular):not(.archetype-banner)');
+          const tagPage = document.querySelector('.tags-page');
+          const ogCreateHasDraft = document.querySelector('#create-topic.open-draft');
+          const ogCreateNoDraft = document.querySelector('#create-topic');
+          
           if (homePage && ogCreateHasDraft || categoryPage && ogCreateHasDraft || tagPage && ogCreateHasDraft) {
             const newCreateButton = document.querySelector('#new-create-topic');
             const vpNewTopic = document.querySelector('.vp-new-topic');
