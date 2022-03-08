@@ -1,4 +1,5 @@
 import { ajax } from "discourse/lib/ajax";
+import { getURLWithCDN } from "discourse-common/lib/get-url";
 
 export default {
   setupComponent(attrs, component) {
