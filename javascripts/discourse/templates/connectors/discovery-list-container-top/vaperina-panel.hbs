@@ -1,110 +1,59 @@
 {{#if currentUser}}
 <div class="vp-panel-top" style="background-image: url('{{userCardBg}}');">
   <div class="vp-panel-contents">
-    {{#if this.loading}}
-      <div class='row'>
-        <div class='topic-avatar'>
-          <div class='placeholder-avatar placeholder-animation'></div>
-        </div>
-        <div class='topic-body'>
-          <div class='placeholder-text placeholder-animation'></div>
-          <div class='placeholder-text placeholder-animation'></div>
-          <div class='placeholder-text placeholder-animation'></div>
-        </div>
+    <div class="vp-panel-contents-top">
+      {{mount-widget widget="vp-avatar"}}
+      <div class="vp-new-topic">
+        {{mount-widget widget="vp-topic"}}  
+        {{new-topic-dropdown-panel category=category}}
       </div>
-    {{else}}
-      <div class="vp-panel-contents-top">
-        {{mount-widget widget="vp-avatar"}}
-        <div class="vp-new-topic">
-          {{mount-widget widget="vp-topic"}}  
-          {{new-topic-dropdown-panel category=category}}
-        </div>
-      </div>
-      <div class="vp-panel-contents-stats">
-        <div class="stats">
-          {{#if userLikesGiven}}
-            <div class="user-stat">
-              <span class="value">
-                <span class="number">{{userLikesReceived}}</span>
-              </span>
-              <span class="label">
-                {{d-icon "heart"}}
-                kapott
-              </span>
-            </div>
-            <a href="/u/{{user}}/activity/likes-given">
-              <div class="user-stat">
-                <span class="value">
-                  <span class="number">{{userLikesGiven}}</span>
-                </span>
-                <span class="label">
-                  {{d-icon "heart"}}
-                  adott
-                </span>
-              </div>
-            </a>
-          {{/if}}
-          <a href="/u/{{user}}/activity/solved">
-            <div class="user-stat">
-              <span class="value">
-                <span class="number">{{userSolvedCount}}</span>
-              </span>
-              <span class="label">
-                {{d-icon "check-square"}}
-                megoldás
-              </span>
-            </div>
+    </div>
+    <div class="vp-panel-contents-stats">
+      <div class="stats">
+        {{#if userLikesGiven}}
+          {{user-stat value=userLikesReceived icon="heart" label="user.summary.likes_received"}}  
+          <a href="/u/{{user}}/activity/likes-given">
+            {{user-stat value=userLikesGiven icon="heart" label="user.summary.likes_given"}}
           </a>
-          <a href="/u/{{user}}/activity/topics">
-            <div class="user-stat">
-              <span class="value">
-                <span class="number">{{userTopicCount}}</span>
-              </span>
-              <span class="label">
-                téma
-              </span>
-            </div>
-          </a>
-          <a href="/u/{{user}}/activity/replies">
-            <div class="user-stat">
-              <span class="value">
-                <span class="number">{{userPostCount}}</span>
-              </span>
-              <span class="label">
-                bejegyzés
-              </span>
-            </div>
-          </a>
-        </div>
-        {{#if stinkinBadges}}
-          <div class="badges">
-            {{#each stinkinBadges as |b|}}
-              <a href="/badges/{{b.id}}/{{b.slug}}">
-                {{#badge-button badge=b class=(concat "badge-type-" b.badge_type_id)}}
-                  {{#if b.multiple_grant}}
-                    <span class="count">&nbsp;(&times;{{b.grant_count}})</span>
-                  {{/if}}
-                {{/badge-button}}
-              </a>
-            {{/each}}
-            <a href="/u/{{user}}/badges">
-              <span class="user-badge">
-                <span class="count">összes ({{allBadges}})</span>
-              </span>
-            </a>
-          </div>
         {{/if}}
+        <a href="/u/{{user}}/activity/solved">
+          {{user-stat value=userSolvedCount icon="check-square" label="solved.solution_summary.other"}}
+        </a>
+        <a href="/u/{{user}}/activity/topics">
+          {{user-stat value=userTopicCount label="user.summary.topic_count"}}
+        </a>
+        <a href="/u/{{user}}/activity/replies">
+          {{user-stat value=userPostCount label="user.summary.post_count"}}
+        </a>
       </div>
-      <div class="vp-panel-contents-bottom">
-        {{#if user}}
-          <a class="vp-link" href="/u/{{user}}/summary">{{d-icon "user"}}</a>
-          <a class="vp-link" href="/u/{{user}}/preferences/account">{{d-icon "cog"}}</a>
-          <a class="vp-link" href="/u/{{user}}/activity/bookmarks">{{d-icon "bookmark"}}&nbsp;{{userBookmarkCount}}</a>
-          <a class="vp-link" href="/u/{{user}}/messages">{{d-icon "envelope"}}</a>
-          <a class="vp-link" href="/u/{{user}}/notifications">{{d-icon "bell"}}</a>
-        {{/if}}
-      </div>
-    {{/if}}
+      {{#if stinkinBadges}}
+        <div class="badges">
+          {{#each stinkinBadges as |b|}}
+            <a href="/badges/{{b.id}}/{{b.slug}}">
+              {{#badge-button badge=b class=(concat "badge-type-" b.badge_type_id)}}
+                {{#if b.multiple_grant}}
+                  <span class="count">&nbsp;(&times;{{b.grant_count}})</span>
+                {{/if}}
+              {{/badge-button}}
+            </a>
+          {{/each}}
+          <a href="/u/{{user}}/badges">
+            <span class="user-badge">
+              <span class="count">összes ({{allBadges}})</span>
+            </span>
+          </a>
+        </div>
+      {{/if}}
+    </div>
+    <div class="vp-panel-contents-bottom">
+      {{#if user}}
+        <a class="vp-link" href="/u/{{user}}/summary">{{d-icon "user"}}</a>
+        <a class="vp-link" href="/u/{{user}}/preferences/account">{{d-icon "cog"}}</a>
+        <a class="vp-link" href="/u/{{user}}/activity/bookmarks">{{d-icon "bookmark"}}&nbsp;{{userBookmarkCount}}</a>
+        <a class="vp-link" href="/u/{{user}}/messages">{{d-icon "envelope"}}</a>
+        <a class="vp-link" href="/u/{{user}}/notifications">{{d-icon "bell"}}</a>
+      {{/if}}
+    </div>
   </div>
 </div>
 {{/if}}
