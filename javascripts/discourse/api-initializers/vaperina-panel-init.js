@@ -95,13 +95,14 @@ export default {
             newCreateButtonLabel.innerHTML = "Vázlat folytatása...";
           }
           
-          const createTopicButton = document.querySelector('#create-topic').hasAttribute('disabled');
-          const newCreateButton = document.querySelector('#new-create-topic');
+          const createTopicButton = document.querySelector('#create-topic[disabled]');
           
           if (categoryPage && createTopicButton || tagPage && createTopicButton) {
+            const newCreateButton = document.querySelector('#new-create-topic');
             newCreateButton.disabled = true;
           } else {
-            if (categoryPage && !createTopicButton || tagPage && !createTopicButton) {
+            if (categoryPage && createTopicButton || tagPage && createTopicButton) {
+              const newCreateButton = document.querySelector('#new-create-topic');
               newCreateButton.disabled = false;
             }
           }
