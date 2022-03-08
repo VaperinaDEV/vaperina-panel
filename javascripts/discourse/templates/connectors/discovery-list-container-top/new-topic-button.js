@@ -2,8 +2,7 @@ import { apiInitializer } from "discourse/lib/api";
 import discourseComputed from "discourse-common/utils/decorators";
 
 export default apiInitializer("0.8", (api) => {
-  api.modifyClass("component:d-navigation", {
-     pluginId: "category-btn-name",
+  api.registerConnectorClass("discovery-list-container-top", "vaperina-panel", {
     
     @discourseComputed("category")
     showCategoryNotifications(category) {
