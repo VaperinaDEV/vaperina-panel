@@ -47,11 +47,11 @@
     </div>
     <div class="vp-panel-contents-bottom">
       {{#if user}}
-        <a class="vp-link" href="/my/summary">{{d-icon "user"}}</a>
-        <a class="vp-link" href="/my/preferences/account">{{d-icon "cog"}}</a>
-        <a class="vp-link" href="/my/activity/bookmarks">{{d-icon "bookmark"}}&nbsp;{{userBookmarkCount}}</a>
-        <a class="vp-link" href="/my/messages">{{d-icon "envelope"}}</a>
-        <a class="vp-link" href="/my/notifications">{{d-icon "bell"}}</a>
+        <a class="vp-link" href="/u/{{user}}/summary">{{d-icon "user"}}</a>
+        <a class="vp-link" href="/u/{{user}}/preferences/account">{{d-icon "cog"}}</a>
+        <a class="vp-link" href="/u/{{user}}/activity/bookmarks">{{d-icon "bookmark"}}&nbsp;{{userBookmarkCount}}</a>
+        <a class="vp-link" href="/u/{{user}}/messages">{{d-icon "envelope"}}</a>
+        <a class="vp-link" href="/u/{{user}}/notifications">{{d-icon "bell"}}</a>
       {{/if}}
     </div>
   </div>
