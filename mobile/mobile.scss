@@ -20,3 +20,14 @@
     }
   }
 }
+
+@media screen and (max-width: 600px) {
+  .vp-panel-contents-stats {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+    .badges {
+      flex-flow: row nowrap;
+    }
+  }
+}
