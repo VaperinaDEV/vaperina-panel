@@ -8,6 +8,7 @@ import { inject as service } from "@ember/service";
 
 export default Component.extend(FilterModeMixin, {
   router: service(),
+  classNames: ["new-topic-button"],
 
   tagName: "",
   
