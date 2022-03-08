@@ -23,10 +23,14 @@
 
 @media screen and (max-width: 600px) {
   .vp-panel-contents-stats {
-    display: block;
     overflow-x: auto;
     white-space: nowrap;
+    .stats {
+      display: flex;
+      justify-content: space-between;
+    }
     .badges {
+      justify-content: space-between;
       flex-flow: row nowrap;
     }
   }
