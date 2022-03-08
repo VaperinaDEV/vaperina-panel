@@ -70,7 +70,7 @@ export default {
             vpNewTopic.classList.add('open-draft');
             newCreateButtonLabel.innerHTML = "Vázlat folytatása...";
           }
-        };
+        },
         api.onAppEvent("draft:destroyed", () => {
           const homePage = document.querySelector('.navigation-topics');
           const categoryPage = document.querySelector('body[class*="category-"]:not(.archetype-regular):not(.archetype-banner)');
