@@ -14,7 +14,13 @@ export default apiInitializer("0.8", (api) => {
       return hasDraft ? "topic.open_draft" : "topic.create";
     },
     actions: {
-      this._super(clickCreateTopicButton);
+      clickCreateTopicButton() {
+        if (this.categoryReadOnlyBanner && !this.hasDraft) {
+          bootbox.alert(this.categoryReadOnlyBanner);
+        } else {
+          this.createTopic();
+        }
+      },
     },
   });
 });
