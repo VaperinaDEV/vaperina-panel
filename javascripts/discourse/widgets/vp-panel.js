@@ -59,7 +59,6 @@ createWidget('vp-topic', {
     let ntb_button_class = "btn btn-default btn btn-icon-text new-create-topic";
     let ntb_button_helper = "button#new-create-topic";
     let ntb_label_helper = "span.d-button-label";
-    const composerModal = require("discourse/models/composer").default;
     const composerController = container.lookup("controller:composer");
 
     const createTopic = function() {
@@ -75,7 +74,7 @@ createWidget('vp-topic', {
         action: Composer.CREATE_TOPIC,
         categoryId: categoryd,
         draftKey: controller.get("model.draft_key") || Composer.NEW_TOPIC_KEY,
-        draftSequence: controller.get("model.draft_sequence") || 0,
+        draftSequence: controller.get("model.draft_sequence"),
       });
     };
 
