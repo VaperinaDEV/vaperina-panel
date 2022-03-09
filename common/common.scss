@@ -38,8 +38,9 @@
   flex-flow: column;
   padding: 0 0.5em 0.5em;
   .stats {
-    width: 100%;
-    height: 100%;
+    a {
+      display: inline-block;
+    }
     .user-stat {
       display: inline-block;
       margin: 0.5em;
