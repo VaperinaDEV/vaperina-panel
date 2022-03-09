@@ -44,6 +44,9 @@
     .user-stat {
       display: inline-block;
       padding: 0.5em;
+      &:last-child {
+        margin-right: 0.5em;
+      }
       .value {
         color: var(--primary);
         font-weight: 600;
