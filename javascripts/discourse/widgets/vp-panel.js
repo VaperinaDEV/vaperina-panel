@@ -16,7 +16,7 @@ function getUser() {
   return user;
 }
 
-createWidget('vp-avatar', {
+createWidget('vp-avatar-panel', {
   tagName: '',
 
   userAvatarUrl() {
@@ -49,7 +49,7 @@ createWidget('vp-avatar', {
   },
 });
 
-createWidget('vp-topic', {
+createWidget('vp-topic-panel', {
   tagName: 'div.vp-topic',
 
   html() {
