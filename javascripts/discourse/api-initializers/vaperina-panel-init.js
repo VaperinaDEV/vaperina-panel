@@ -10,17 +10,16 @@ export default {
     }
     withPluginApi("0.8.7", (api) => {
 
-      function getVaperinaPanel() {
-        let pref = localStorage.getItem("vaperinaPanel");
+      function getVaperinaPanel1() {
+        let pref = localStorage.getItem("vaperinaPanel1");
         let result = settings.vaperina_panel;
         if (pref !== null || pref === null) {
           result = pref === "true";
         }
         return result;
-        pref.clear();
       }
 
-      if (!getVaperinaPanel()) {
+      if (!getVaperinaPanel1()) {
         api.registerConnectorClass("discovery-list-container-top", "vaperina-panel", {
           shouldRender() {
             return false;
@@ -31,7 +30,7 @@ export default {
       api.modifyClass("model:user", {
         pluginId: "user-setting",
         vaperinaPanel: function() {
-          return getVaperinaPanel();
+          return getVaperinaPanel1();
         }.property()
       });
 
@@ -40,18 +39,18 @@ export default {
         actions: {
           save() {
             this._super();
-            if (getVaperinaPanel() != this.get("model.vaperinaPanel")) {
+            if (getVaperinaPanel1() != this.get("model.vaperinaPanel1")) {
               Discourse.set("assetVersion", "forceRefresh");
             }
             localStorage.setItem(
-              "vaperinaPanel",
-              this.get("model.vaperinaPanel").toString()
+              "vaperinaPanel1",
+              this.get("model.vaperinaPanel1").toString()
             );
           }
         }
       });
 
-      if (getVaperinaPanel()) {
+      if (getVaperinaPanel1()) {
 
         if (api.getCurrentUser() === null) return false;
         const body = document.querySelector('body');
