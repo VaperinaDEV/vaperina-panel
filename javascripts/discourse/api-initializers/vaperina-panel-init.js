@@ -4,7 +4,6 @@ import { ajax } from "discourse/lib/ajax";
 export default {
   name: "vaperina-panel",
   initialize() {
-    if (this.site.mobileView) {
       withPluginApi("0.8.7", (api) => {
 
         function getVaperinaPanel() {
@@ -46,7 +45,7 @@ export default {
             }
           }
         });
-
+        if (this.site.mobileView) {
         if (getVaperinaPanel()) {
 
           if (api.getCurrentUser() === null) return false;
@@ -119,7 +118,7 @@ export default {
             }
           });
         }
+        }
       });
-    }
   },
 };
