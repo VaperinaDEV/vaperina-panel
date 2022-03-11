@@ -53,7 +53,6 @@ export default {
         const body = document.querySelector('body');
         body.classList.add('vp');
 
-        if (this.site.mobileView) {
         api.onAppEvent("composer:closed", () => {
           const homePage = document.querySelector('.navigation-topics');
           const categoryPage = document.querySelector('body[class*="category-"]:not(.archetype-regular):not(.archetype-banner)');
@@ -61,7 +60,7 @@ export default {
           const ogCreateHasDraft = document.querySelector('#create-topic.open-draft');
           const ogCreateNoDraft = document.querySelector('#create-topic');
 
-          if (homePage && ogCreateHasDraft || categoryPage && ogCreateHasDraft || tagPage && ogCreateHasDraft) {
+          if (this.site.mobileView && homePage && ogCreateHasDraft || this.site.mobileView && categoryPage && ogCreateHasDraft || this.site.mobileView && tagPage && ogCreateHasDraft) {
             const newCreateButton = document.querySelector('#new-create-topic');
             const vpNewTopic = document.querySelector('.vp-new-topic');
             const newCreateButtonLabel = document.querySelector('.new-create-topic .d-button-label');
@@ -70,8 +69,7 @@ export default {
             newCreateButtonLabel.innerHTML = "Vázlat folytatása...";
           }
         });
-        }
-        if (this.site.mobileView) {
+          
         api.onAppEvent("draft:destroyed", () => {
           const homePage = document.querySelector('.navigation-topics');
           const categoryPage = document.querySelector('body[class*="category-"]:not(.archetype-regular):not(.archetype-banner)');
@@ -79,7 +77,7 @@ export default {
           const ogCreateHasDraft = document.querySelector('#create-topic.open-draft');
           const ogCreateNoDraft = document.querySelector('#create-topic');
 
-          if (homePage && ogCreateNoDraft || categoryPage && ogCreateNoDraft || tagPage && ogCreateNoDraft) {
+          if (this.site.mobileView && homePage && ogCreateNoDraft || this.site.mobileView && categoryPage && ogCreateNoDraft || this.site.mobileView && tagPage && ogCreateNoDraft) {
             const newCreateButton = document.querySelector('#new-create-topic');
             const vpNewTopic = document.querySelector('.vp-new-topic');
             const newCreateButtonLabel = document.querySelector('.new-create-topic .d-button-label');
@@ -88,7 +86,6 @@ export default {
             newCreateButtonLabel.innerHTML = "Írj egy új témát...";
           }
         });
-        }
         
         api.onPageChange(() => {
           const homePage = document.querySelector('.navigation-topics');
@@ -97,7 +94,7 @@ export default {
           const ogCreateHasDraft = document.querySelector('#create-topic.open-draft');
           const ogCreateNoDraft = document.querySelector('#create-topic');
 
-          if (homePage && ogCreateHasDraft || categoryPage && ogCreateHasDraft || tagPage && ogCreateHasDraft) {
+          if (this.site.mobileView && homePage && ogCreateHasDraft || this.site.mobileView && categoryPage && ogCreateHasDraft || this.site.mobileView && tagPage && ogCreateHasDraft) {
             const newCreateButton = document.querySelector('#new-create-topic');
             const vpNewTopic = document.querySelector('.vp-new-topic');
             const newCreateButtonLabel = document.querySelector('.new-create-topic .d-button-label');
@@ -109,11 +106,11 @@ export default {
           const createTopicButtonDisabled = document.querySelector('#create-topic[disabled]');
           const createTopicButton = document.querySelector('#create-topic');
 
-          if (categoryPage && createTopicButtonDisabled || tagPage && createTopicButtonDisabled) {
+          if (this.site.mobileView && categoryPage && createTopicButtonDisabled || this.site.mobileView && tagPage && createTopicButtonDisabled) {
             const newCreateButton = document.querySelector('#new-create-topic');
             newCreateButton.disabled = true;
           } else {
-            if (categoryPage && createTopicButton || tagPage && createTopicButton) {
+            if (this.site.mobileView && categoryPage && createTopicButton || this.site.mobileView && tagPage && createTopicButton) {
               const newCreateButton = document.querySelector('#new-create-topic');
               newCreateButton.disabled = false;
             }
