@@ -53,8 +53,9 @@ export default {
         const body = document.querySelector('body');
         body.classList.add('vp');
 
-
+        
         api.onAppEvent("composer:closed", () => {
+          if (this.site.mobileView) {
           const homePage = document.querySelector('.navigation-topics');
           const categoryPage = document.querySelector('body[class*="category-"]:not(.archetype-regular):not(.archetype-banner)');
           const tagPage = document.querySelector('.tags-page');
@@ -69,9 +70,11 @@ export default {
             vpNewTopic.classList.add('open-draft');
             newCreateButtonLabel.innerHTML = "Vázlat folytatása...";
           }
+          }
         });
 
         api.onAppEvent("draft:destroyed", () => {
+          if (this.site.mobileView) {
           const homePage = document.querySelector('.navigation-topics');
           const categoryPage = document.querySelector('body[class*="category-"]:not(.archetype-regular):not(.archetype-banner)');
           const tagPage = document.querySelector('.tags-page');
@@ -86,9 +89,11 @@ export default {
             vpNewTopic.classList.remove('open-draft');
             newCreateButtonLabel.innerHTML = "Írj egy új témát...";
           }
+          }
         });
 
         api.onPageChange(() => {
+          if (this.site.mobileView) {
           const homePage = document.querySelector('.navigation-topics');
           const categoryPage = document.querySelector('body[class*="category-"]:not(.archetype-regular):not(.archetype-banner)');
           const tagPage = document.querySelector('.tags-page');
@@ -115,6 +120,7 @@ export default {
               const newCreateButton = document.querySelector('#new-create-topic');
               newCreateButton.disabled = false;
             }
+          }
           }
         });
       }
