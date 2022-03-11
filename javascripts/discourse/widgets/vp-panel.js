@@ -1,5 +1,4 @@
 import { createWidget } from "discourse/widgets/widget";
-import Site from "discourse/models/site";
 import { 
   avatarImg,
   getRawSize,
@@ -11,10 +10,6 @@ import DiscourseURL from "discourse/lib/url";
 import { h } from "virtual-dom";
 import Composer from "discourse/models/composer";
 import { iconNode } from "discourse-common/lib/icon-library";
-
-if (Site.currentProp("!mobileView")) {
-  return;
-}
 
 function getUser() {
   var user = User.current();
