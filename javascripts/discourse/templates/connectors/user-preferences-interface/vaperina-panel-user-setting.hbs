@@ -1,1 +1,3 @@
-{{preference-checkbox labelKey=(theme-prefix 'vaperina_panel_user') checked=model.vaperinaPanel}}
+{{#unless site.mobileView}}
+  {{preference-checkbox labelKey=(theme-prefix 'vaperina_panel_user') checked=model.vaperinaPanel}}
+{{/unless}}
