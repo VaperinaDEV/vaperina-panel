@@ -47,9 +47,8 @@ export default {
       });
 
       if (getVaperinaPanel()) {
-
+        if (this.site.mobileView) {
         if (api.getCurrentUser() === null) return false;
-        if (this.site.mobileView === null) return false;
         const body = document.querySelector('body');
         body.classList.add('vp');
 
@@ -116,6 +115,7 @@ export default {
             }
           }
         });
+        }
       }
     });
   },
