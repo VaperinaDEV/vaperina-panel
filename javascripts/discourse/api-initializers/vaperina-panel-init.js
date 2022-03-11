@@ -4,120 +4,122 @@ import { ajax } from "discourse/lib/ajax";
 export default {
   name: "vaperina-panel",
   initialize() {
-    withPluginApi("0.8.7", (api) => {
-      
-      function getVaperinaPanel() {
-        let pref = localStorage.getItem("vaperinaPanel");
-        let result = settings.vaperina_panel;
-        if (pref !== null || pref === null) {
-          result = pref === "true";
-        }
-        return result;
-      }
-      
-      if (!getVaperinaPanel()) {
-        api.registerConnectorClass("discovery-list-container-top", "vaperina-panel", {
-          shouldRender() {
-            return false;
+    if (this.site.mobileView) {
+      withPluginApi("0.8.7", (api) => {
+
+        function getVaperinaPanel() {
+          let pref = localStorage.getItem("vaperinaPanel");
+          let result = settings.vaperina_panel;
+          if (pref !== null || pref === null) {
+            result = pref === "true";
           }
-        });
-      }
-      // technically we only want to amend current user here
-      api.modifyClass("model:user", {
-        pluginId: "user-setting",
-        vaperinaPanel: function() {
-          return getVaperinaPanel();
-        }.property()
-      });
-      
-      api.modifyClass("controller:preferences/interface", {
-        pluginId: "button-add",
-        actions: {
-          save() {
-            this._super();
-            if (getVaperinaPanel() != this.get("model.vaperinaPanel")) {
-              Discourse.set("assetVersion", "forceRefresh");
+          return result;
+        }
+
+        if (!getVaperinaPanel()) {
+          api.registerConnectorClass("discovery-list-container-top", "vaperina-panel", {
+            shouldRender() {
+              return false;
             }
-            localStorage.setItem(
-              "vaperinaPanel",
-              this.get("model.vaperinaPanel").toString()
-            );
-          }
+          });
         }
-      });
-  
-      if (getVaperinaPanel()) {
-        
-        if (api.getCurrentUser() === null) return false;
-        
-        const body = document.querySelector('body');
-        body.classList.add('vp');
-        
-
-       api.onAppEvent("composer:closed", () => {
-          const homePage = document.querySelector('.navigation-topics');
-          const categoryPage = document.querySelector('body[class*="category-"]:not(.archetype-regular):not(.archetype-banner)');
-          const tagPage = document.querySelector('.tags-page');
-          const ogCreateHasDraft = document.querySelector('#create-topic.open-draft');
-          const ogCreateNoDraft = document.querySelector('#create-topic');
-          
-          if (homePage && ogCreateHasDraft || categoryPage && ogCreateHasDraft || tagPage && ogCreateHasDraft) {
-            const newCreateButton = document.querySelector('#new-create-topic');
-            const vpNewTopic = document.querySelector('.vp-new-topic');
-            const newCreateButtonLabel = document.querySelector('.new-create-topic .d-button-label');
-            newCreateButton.classList.add('open-draft');
-            vpNewTopic.classList.add('open-draft');
-            newCreateButtonLabel.innerHTML = "Vázlat folytatása...";
-          }
+        // technically we only want to amend current user here
+        api.modifyClass("model:user", {
+          pluginId: "user-setting",
+          vaperinaPanel: function() {
+            return getVaperinaPanel();
+          }.property()
         });
-        
-        api.onAppEvent("draft:destroyed", () => {
-          const homePage = document.querySelector('.navigation-topics');
-          const categoryPage = document.querySelector('body[class*="category-"]:not(.archetype-regular):not(.archetype-banner)');
-          const tagPage = document.querySelector('.tags-page');
-          const ogCreateHasDraft = document.querySelector('#create-topic.open-draft');
-          const ogCreateNoDraft = document.querySelector('#create-topic');
-          
-          if (homePage && ogCreateNoDraft || categoryPage && ogCreateNoDraft || tagPage && ogCreateNoDraft) {
-            const newCreateButton = document.querySelector('#new-create-topic');
-            const vpNewTopic = document.querySelector('.vp-new-topic');
-            const newCreateButtonLabel = document.querySelector('.new-create-topic .d-button-label');
-            newCreateButton.classList.remove('open-draft');
-            vpNewTopic.classList.remove('open-draft');
-            newCreateButtonLabel.innerHTML = "Írj egy új témát...";
+
+        api.modifyClass("controller:preferences/interface", {
+          pluginId: "button-add",
+          actions: {
+            save() {
+              this._super();
+              if (getVaperinaPanel() != this.get("model.vaperinaPanel")) {
+                Discourse.set("assetVersion", "forceRefresh");
+              }
+              localStorage.setItem(
+                "vaperinaPanel",
+                this.get("model.vaperinaPanel").toString()
+              );
+            }
           }
         });
 
-        api.onPageChange(() => {
-          const homePage = document.querySelector('.navigation-topics');
-          const categoryPage = document.querySelector('body[class*="category-"]:not(.archetype-regular):not(.archetype-banner)');
-          const tagPage = document.querySelector('.tags-page');
-          const ogCreateHasDraft = document.querySelector('#create-topic.open-draft');
-          const ogCreateNoDraft = document.querySelector('#create-topic');
-          
-          if (homePage && ogCreateHasDraft || categoryPage && ogCreateHasDraft || tagPage && ogCreateHasDraft) {
-            const newCreateButton = document.querySelector('#new-create-topic');
-            const vpNewTopic = document.querySelector('.vp-new-topic');
-            const newCreateButtonLabel = document.querySelector('.new-create-topic .d-button-label');
-            newCreateButton.classList.add('open-draft');
-            vpNewTopic.classList.add('open-draft');
-            newCreateButtonLabel.innerHTML = "Vázlat folytatása...";
-          }
-          
-          const createTopicButtonDisabled = document.querySelector('#create-topic[disabled]');
-          const createTopicButton = document.querySelector('#create-topic');
-          
-          if (categoryPage && createTopicButtonDisabled || tagPage && createTopicButtonDisabled) {
-            const newCreateButton = document.querySelector('#new-create-topic');
-            newCreateButton.disabled = true;
-          } else {
-            if (categoryPage && createTopicButton || tagPage && createTopicButton) {
+        if (getVaperinaPanel()) {
+
+          if (api.getCurrentUser() === null) return false;
+
+          const body = document.querySelector('body');
+          body.classList.add('vp');
+
+
+         api.onAppEvent("composer:closed", () => {
+            const homePage = document.querySelector('.navigation-topics');
+            const categoryPage = document.querySelector('body[class*="category-"]:not(.archetype-regular):not(.archetype-banner)');
+            const tagPage = document.querySelector('.tags-page');
+            const ogCreateHasDraft = document.querySelector('#create-topic.open-draft');
+            const ogCreateNoDraft = document.querySelector('#create-topic');
+
+            if (homePage && ogCreateHasDraft || categoryPage && ogCreateHasDraft || tagPage && ogCreateHasDraft) {
               const newCreateButton = document.querySelector('#new-create-topic');
-              newCreateButton.disabled = false;
+              const vpNewTopic = document.querySelector('.vp-new-topic');
+              const newCreateButtonLabel = document.querySelector('.new-create-topic .d-button-label');
+              newCreateButton.classList.add('open-draft');
+              vpNewTopic.classList.add('open-draft');
+              newCreateButtonLabel.innerHTML = "Vázlat folytatása...";
             }
-          }
-        });
-      }
-    });
+          });
+
+          api.onAppEvent("draft:destroyed", () => {
+            const homePage = document.querySelector('.navigation-topics');
+            const categoryPage = document.querySelector('body[class*="category-"]:not(.archetype-regular):not(.archetype-banner)');
+            const tagPage = document.querySelector('.tags-page');
+            const ogCreateHasDraft = document.querySelector('#create-topic.open-draft');
+            const ogCreateNoDraft = document.querySelector('#create-topic');
+
+            if (homePage && ogCreateNoDraft || categoryPage && ogCreateNoDraft || tagPage && ogCreateNoDraft) {
+              const newCreateButton = document.querySelector('#new-create-topic');
+              const vpNewTopic = document.querySelector('.vp-new-topic');
+              const newCreateButtonLabel = document.querySelector('.new-create-topic .d-button-label');
+              newCreateButton.classList.remove('open-draft');
+              vpNewTopic.classList.remove('open-draft');
+              newCreateButtonLabel.innerHTML = "Írj egy új témát...";
+            }
+          });
+
+          api.onPageChange(() => {
+            const homePage = document.querySelector('.navigation-topics');
+            const categoryPage = document.querySelector('body[class*="category-"]:not(.archetype-regular):not(.archetype-banner)');
+            const tagPage = document.querySelector('.tags-page');
+            const ogCreateHasDraft = document.querySelector('#create-topic.open-draft');
+            const ogCreateNoDraft = document.querySelector('#create-topic');
+
+            if (homePage && ogCreateHasDraft || categoryPage && ogCreateHasDraft || tagPage && ogCreateHasDraft) {
+              const newCreateButton = document.querySelector('#new-create-topic');
+              const vpNewTopic = document.querySelector('.vp-new-topic');
+              const newCreateButtonLabel = document.querySelector('.new-create-topic .d-button-label');
+              newCreateButton.classList.add('open-draft');
+              vpNewTopic.classList.add('open-draft');
+              newCreateButtonLabel.innerHTML = "Vázlat folytatása...";
+            }
+
+            const createTopicButtonDisabled = document.querySelector('#create-topic[disabled]');
+            const createTopicButton = document.querySelector('#create-topic');
+
+            if (categoryPage && createTopicButtonDisabled || tagPage && createTopicButtonDisabled) {
+              const newCreateButton = document.querySelector('#new-create-topic');
+              newCreateButton.disabled = true;
+            } else {
+              if (categoryPage && createTopicButton || tagPage && createTopicButton) {
+                const newCreateButton = document.querySelector('#new-create-topic');
+                newCreateButton.disabled = false;
+              }
+            }
+          });
+        }
+      });
+    }
   },
 };
