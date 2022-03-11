@@ -1,9 +1,13 @@
 import { withPluginApi } from "discourse/lib/plugin-api";
 import { ajax } from "discourse/lib/ajax";
+import Site from "discourse/models/site";
 
 export default {
   name: "vaperina-panel",
   initialize() {
+    if (Site.currentProp("!mobileView")) {
+      return;
+    }
     withPluginApi("0.8.7", (api) => {
 
       function getVaperinaPanel() {
@@ -53,14 +57,13 @@ export default {
         body.classList.add('vp');
 
         api.onAppEvent("composer:closed", () => {
-          const mobileView = this.site.mobileView;
           const homePage = document.querySelector('.navigation-topics');
           const categoryPage = document.querySelector('body[class*="category-"]:not(.archetype-regular):not(.archetype-banner)');
           const tagPage = document.querySelector('.tags-page');
           const ogCreateHasDraft = document.querySelector('#create-topic.open-draft');
           const ogCreateNoDraft = document.querySelector('#create-topic');
 
-          if (mobileView && homePage && ogCreateHasDraft || mobileView && categoryPage && ogCreateHasDraft || mobileView && tagPage && ogCreateHasDraft) {
+          if (homePage && ogCreateHasDraft || categoryPage && ogCreateHasDraft || tagPage && ogCreateHasDraft) {
             const newCreateButton = document.querySelector('#new-create-topic');
             const vpNewTopic = document.querySelector('.vp-new-topic');
             const newCreateButtonLabel = document.querySelector('.new-create-topic .d-button-label');
@@ -71,14 +74,13 @@ export default {
         });
           
         api.onAppEvent("draft:destroyed", () => {
-          const mobileView = this.site.mobileView;
           const homePage = document.querySelector('.navigation-topics');
           const categoryPage = document.querySelector('body[class*="category-"]:not(.archetype-regular):not(.archetype-banner)');
           const tagPage = document.querySelector('.tags-page');
           const ogCreateHasDraft = document.querySelector('#create-topic.open-draft');
           const ogCreateNoDraft = document.querySelector('#create-topic');
 
-          if (mobileView && homePage && ogCreateNoDraft || mobileView && categoryPage && ogCreateNoDraft || mobileView && tagPage && ogCreateNoDraft) {
+          if (homePage && ogCreateNoDraft || categoryPage && ogCreateNoDraft || tagPage && ogCreateNoDraft) {
             const newCreateButton = document.querySelector('#new-create-topic');
             const vpNewTopic = document.querySelector('.vp-new-topic');
             const newCreateButtonLabel = document.querySelector('.new-create-topic .d-button-label');
@@ -89,14 +91,13 @@ export default {
         });
         
         api.onPageChange(() => {
-          const mobileView = this.site.mobileView;
           const homePage = document.querySelector('.navigation-topics');
           const categoryPage = document.querySelector('body[class*="category-"]:not(.archetype-regular):not(.archetype-banner)');
           const tagPage = document.querySelector('.tags-page');
           const ogCreateHasDraft = document.querySelector('#create-topic.open-draft');
           const ogCreateNoDraft = document.querySelector('#create-topic');
 
-          if (mobileView && homePage && ogCreateHasDraft || mobileView && categoryPage && ogCreateHasDraft || mobileView && tagPage && ogCreateHasDraft) {
+          if (homePage && ogCreateHasDraft || categoryPage && ogCreateHasDraft || tagPage && ogCreateHasDraft) {
             const newCreateButton = document.querySelector('#new-create-topic');
             const vpNewTopic = document.querySelector('.vp-new-topic');
             const newCreateButtonLabel = document.querySelector('.new-create-topic .d-button-label');
@@ -108,11 +109,11 @@ export default {
           const createTopicButtonDisabled = document.querySelector('#create-topic[disabled]');
           const createTopicButton = document.querySelector('#create-topic');
 
-          if (mobileView && categoryPage && createTopicButtonDisabled || mobileView && tagPage && createTopicButtonDisabled) {
+          if (categoryPage && createTopicButtonDisabled || tagPage && createTopicButtonDisabled) {
             const newCreateButton = document.querySelector('#new-create-topic');
             newCreateButton.disabled = true;
           } else {
-            if (mobileView && categoryPage && createTopicButton || mobileView && tagPage && createTopicButton) {
+            if (categoryPage && createTopicButton || tagPage && createTopicButton) {
               const newCreateButton = document.querySelector('#new-create-topic');
               newCreateButton.disabled = false;
             }
