@@ -105,7 +105,6 @@ export default {
             newCreateButtonLabel.innerHTML = "Vázlat folytatása...";
           }
           
-          const mobileView = this.site.mobileView;
           const createTopicButtonDisabled = document.querySelector('#create-topic[disabled]');
           const createTopicButton = document.querySelector('#create-topic');
 
