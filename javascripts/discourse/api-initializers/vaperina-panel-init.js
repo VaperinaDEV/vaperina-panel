@@ -17,6 +17,7 @@ export default {
           result = pref === "true";
         }
         return result;
+        pref.clear();
       }
 
       if (!getVaperinaPanel()) {
