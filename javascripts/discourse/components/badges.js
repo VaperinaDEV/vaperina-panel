@@ -8,9 +8,6 @@ export default Component.extend(CardContentsBase, {
     "showBadges",
   ],
   
-  init() {
-    this._super(...arguments);
-    @discourseComputed("user.badge_count", "user.featured_user_badges.length")
-    moreBadgesCount: (badgeCount, badgeLength) => badgeCount - badgeLength,
-  }
+  @discourseComputed("user.badge_count", "user.featured_user_badges.length")
+  moreBadgesCount: (badgeCount, badgeLength) => badgeCount - badgeLength,
 })
