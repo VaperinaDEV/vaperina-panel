@@ -3,7 +3,10 @@ import CardContentsBase from "discourse/mixins/card-contents-base";
 import User from "discourse/models/user";
 
 export default Component.extend({
-  tagName: "",
+    classNameBindings: [
+    "visible:show",
+    "showBadges",
+  ],
   
   init() {
     this._super(...arguments);
