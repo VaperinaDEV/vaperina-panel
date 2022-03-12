@@ -28,6 +28,20 @@
             {{user-stat value=userPostCount label="user.summary.post_count"}}
           </a>
         </div>
+        {{#if this.user.featured_user_badges}}
+            <div class="badge-section">
+              {{#each this.user.featured_user_badges as |ub|}}
+                {{user-badge badge=ub.badge user=this.user}}
+              {{/each}}
+              {{#if this.showMoreBadges}}
+                <span class="more-user-badges">
+                  {{#link-to "user.badges" this.user}}
+                    {{i18n "badges.more_badges" count=this.moreBadgesCount}}
+                  {{/link-to}}
+                </span>
+              {{/if}}
+            </div>
+          {{/if}}
         {{#if stinkinBadges}}
           <div class="badges">
             {{#each stinkinBadges as |b|}}
