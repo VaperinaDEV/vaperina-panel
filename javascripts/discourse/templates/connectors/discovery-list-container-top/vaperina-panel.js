@@ -51,6 +51,11 @@ export default {
           component.set("followersCount", followersCount);
           component.set("followingCount", followingCount);
         });
+        
+        ajax("/drafts.json").then (function(result) {
+          const draftMy = result.drafts.excerpt;
+          component.set("draftMy", draftMy);
+        });
       });
     }
   },
