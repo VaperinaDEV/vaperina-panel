@@ -54,8 +54,8 @@ export default {
         
         ajax("/drafts.json").then (function(result) {
           const draftMy = [];
-          if (result.drafts) {
-            result.drafts.forEach(function(drafts){
+          if (result.drafts.excerpt) {
+            result.drafts.excerpt.forEach(function(drafts){
               draftMy.push(drafts);
             });
           }
