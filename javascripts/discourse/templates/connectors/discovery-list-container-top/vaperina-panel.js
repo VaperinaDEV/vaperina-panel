@@ -54,9 +54,9 @@ export default {
         
         ajax("/drafts.json").then (function(result) {
           const draftMy = [];
-          if (result.excerpt) {
-            result.excerpt.forEach(function(excerpt){
-              draftMy.push(excerpt);
+          if (result.drafts.title) {
+            result.drafts.title.forEach(function(title){
+              draftMy.push(title);
             });
           }
           component.set("draftMy", draftMy);
