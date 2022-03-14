@@ -65,6 +65,16 @@
           </div>
         {{/if}}
       </div>
+      
+      {{#if darftMy}}
+          <div class="draft">
+            {{#each darftMy as |d|}}
+              <a href="/activity/drafts/{{d.id}}/{{d.slug}}">
+                <span class="count"></span>
+              </a>
+            {{/each}}
+          </div>
+        {{/if}}
       <div class="vp-panel-contents-bottom">
         {{#if user}}
           <a class="vp-link" href="/u/{{user}}/summary">{{d-icon "user"}}</a>
