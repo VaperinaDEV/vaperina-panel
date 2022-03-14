@@ -65,21 +65,20 @@
           </div>
         {{/if}}
       </div>
-      
-      {{#if darftMy}}
-          <div class="draft">
-            {{#each darftMy as |d|}}
-              <a href="/activity/drafts/{{d.id}}/{{d.slug}}">
-                <span class="count"></span>
-              </a>
-            {{/each}}
-          </div>
-        {{/if}}
+      {{#if draftMy}}
+        <div class="drafts">
+          {{#each darftMy as |d|}}
+            <a href="/activity/drafts/{{d.id}}/{{d.slug}}">
+              <span class="count"></span>
+            </a>
+          {{/each}}
+        </div>
+      {{/if}}
       <div class="vp-panel-contents-bottom">
         {{#if user}}
           <a class="vp-link" href="/u/{{user}}/summary">{{d-icon "user"}}</a>
           <a class="vp-link" href="/u/{{user}}/preferences/account">{{d-icon "cog"}}</a>
-          <a class="vp-link" href="/u/{{user}}/activity/drafts">{{d-icon "pencil-alt"}} {{draftMy}}</a>
+          <a class="vp-link" href="/u/{{user}}/activity/drafts">{{d-icon "pencil-alt"}} </a>
           <a class="vp-link" href="/u/{{user}}/activity/bookmarks">{{d-icon "bookmark"}}&nbsp;{{userBookmarkCount}}</a>
           <a class="vp-link" href="/u/{{user}}/messages">{{d-icon "envelope"}}</a>
           <a class="vp-link" href="/u/{{user}}/notifications">{{d-icon "bell"}}</a>
