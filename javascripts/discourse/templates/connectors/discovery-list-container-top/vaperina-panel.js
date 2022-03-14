@@ -53,7 +53,7 @@ export default {
         });
         
         ajax("/drafts.json").then (function(result) {
-          const draftMy = result.drafts.excerpt;
+          const draftMy = result.user.drafts;
           component.set("draftMy", draftMy);
         });
       });
