@@ -53,7 +53,12 @@ export default {
         });
         
         ajax("/drafts.json").then (function(result) {
-          const draftMy = result.user.created_at;
+          const draftMy = result.created_at;
+          if (result.created_at) {
+            result.created_at.forEach(function(created_at){
+              draftMy.push(created_at);
+            });
+          }
           component.set("draftMy", draftMy);
         });
       });
